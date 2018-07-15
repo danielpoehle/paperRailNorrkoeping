@@ -1,0 +1,133 @@
+\documentclass[final]{siamltex}
+%	[12pt,	% Schriftgroesse
+%	a4paper,	% Papiergroesse
+%	twoside,	% zweiseitig
+%	DIV11,		% Verhaeltnis von Rand zu Text (groesser=mehr Text)
+%	BCOR10mm,	% Korrekturen fuer Druck
+%	abstracton,	% Ueberschrift bei abstract&acknowledgments
+%	openright,	% auf rechter Seite anfangen
+%	footexclude=false,	% ???
+%	draft]		% Fuer erste Versionen (spaeter final)
+%	pointlessnumbers,	% macht die Punkte hinter der Kapitelnummer weg
+%	final]		% siehe oben
+%	{scrreprt}	% Klasse: deutscher Report
+%	{report}		% amerikanischer Report
+
+\usepackage{amsmath,amssymb,amstext}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[dvips]{epsfig}
+\usepackage{texdraw}
+\usepackage{color}
+\usepackage{url}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{placeins}
+\usepackage{algorithmic}
+\usepackage{multirow} 
+\usepackage{tikz}								% Laedt das TikZ-Package (erlaubt das zeichnen von Graphen)
+\usetikzlibrary{arrows}					% erlaubt Pfeile mit TikZ zu zeichnen
+\usetikzlibrary{shapes}					% erlaubt ??? mit TikZ zu zeichnen
+
+\newtheorem{Theorem}{Theorem}[section]	% Damit sind dann Theorem, Korollar und Lemma definiert.
+\newtheorem{Cor}[Theorem]{Korollar}	    % Die Nummerierung erfolgt Kapitelweise.
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Def}[Theorem]{Definiton}
+\newtheorem{Remark}[Theorem]{Remark}
+\newtheorem{Bsp}[Theorem]{Example}
+
+\DeclareSymbolFont{msbm}{U}{msb}{m}{n}
+\DeclareMathSymbol{\N}{\mathalpha}{msbm}{'116}
+\DeclareMathSymbol{\R}{\mathalpha}{msbm}{'122}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%\def\ds{\displaystyle}
+
+%\newcommand{\todo}[1]{\par \vspace{2mm}\centerline{\fbox{\fbox{\bf #1}}}\vspace{2mm}}
+
+\newcommand{\abs}[1]{\ensuremath{ \left\lvert {#1} \right\rvert} }	% Betrag
+\newcommand{\st}{\ensuremath{\text{s.t.}} }		% subject to für Optimierungsproblem
+%\newcommand{\N}{\ensuremath{\mathbb{N}}}			% Mengen N
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}			% Mengen Z
+%\newcommand{\R}{\ensuremath{\mathbb{R}}}			% Mengen R
+\newcommand{\B}{\ensuremath{\mathbb{B}}}			% Menge B (binaere Zahlen)
+\newcommand{\T}{\ensuremath{\text{T}} }				% T für transponiert
+
+\newcommand\nn{\nonumber}					% Keine Gleichungsnummer
+
+\renewcommand{\d}{\ensuremath{\hspace{-0.7mm}\text{d}} }	% d für Integral dr oder dt
+
+
+\numberwithin{equation}{section}
+
+%\newcommand{\my}[1]{{\bf TODO #1}}
+%\newcommand{\eqdach}{\stackrel{\wedge}{=}}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%\renewcommand{\qedsymbol}{qed}
+
+\graphicspath{{Bilder/}}		% path to look for (eps)-pictures
+
+\title{Scheduling}
+%\thanks{This work was financially supported by BMI, Project DigiKap, FKZ ???.}}
+\author{
+Florian Dahms\thanks{???, ???, Frankfurt, Germany} ({\tt dahms@???.de})
+\and Anna-Lena Frank\thanks{I.NMF 32, DB Netz AG, Frankfurt am Main, Germany} ({\tt Anna-Lena.Frank@deutschebahn.com, Sebastian.Se.Kuehn@deutschebahn.com, Daniel.Poehle@deutschebahn.com})
+\and Sebastian K\"uhn\footnotemark[2]
+\and Daniel P\"ohle\footnotemark[2]}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} %% Not more than 250 words
+In this article, we discuss the optimization of
+a linearized traffic flow network model based on conservation laws.
+We present two solution approaches. One relies on the classical Lagrangian formalism
+(or adjoint calculus), whereas another one uses a discrete mixed-integer framework.
+We show how both approaches are related to each other theoretically.
+Numerical experiments are accompanied to show the quality of solutions.
+\end{abstract}
+
+\begin{keywords}
+traffic networks, network optimization
+\end{keywords}
+
+\begin{AMS}
+90B20, 90C11
+% 90B20 Traffic problems, 90C11 Mixed integer programming
+\end{AMS}
+
+\pagestyle{myheadings}
+\thispagestyle{plain}
+\markboth{F. DAHMS, A-L. FRANK, S. K\"UHN AND D. P\"OHLE}{SCHEDULING}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{introduction}
+
+\input{modelling}
+
+\input{optproblem}
+
+\input{mip}
+
+\input{numerics}
+
+%\input{outlook}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgements}
+This work was financially supported by BMI, Project DigiKap, FKZ ???.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibliographystyle{plain}
+\bibliographystyle{siam}
+\bibliography{Bibliographie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
