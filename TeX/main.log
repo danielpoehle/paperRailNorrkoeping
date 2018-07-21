@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.7.21)  22 JUL 2018 00:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.7.21)  22 JUL 2018 00:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,7 +721,13 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 81.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(./extendedAbstract.tex) (./introduction.tex [1
+(./extendedAbstract.tex
+Overfull \hbox (13.14082pt too wide) in paragraph at lines 18--19
+[]\OT1/cmr/m/n/10 first in-fras-truc-ture man-ager to use op-ti-miza-tion mod-e
+ls for freight train timetable
+ []
+
+) (./introduction.tex [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
@@ -731,21 +737,19 @@ LaTeX Warning: Reference `chap:adjoints' on page 2 undefined on input line 39.
 LaTeX Warning: Reference `chap:MIP_dual' on page 2 undefined on input line 40.
 
 ) (./modelling.tex) (./optproblem.tex) (./mip.tex) (./numerics.tex) (./main.bbl
+[2]
 Missing character: There is no ´ in font cmcsc10!
-[2]) [3] (./main.aux)
+) [3] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 16321 strings out of 494798
- 334915 string characters out of 6176800
- 403478 words of memory out of 5000000
- 19301 multiletter control sequences out of 15000+600000
- 9169 words of font info for 35 fonts, out of 8000000 for 9000
+ 16326 strings out of 494798
+ 334975 string characters out of 6176800
+ 404487 words of memory out of 5000000
+ 19306 multiletter control sequences out of 15000+600000
+ 10223 words of font info for 40 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  55i,6n,67p,450b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
@@ -754,14 +758,15 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmtt8.pfb>
-Output written on main.pdf (3 pages, 152604 bytes).
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+t8.pfb>
+Output written on main.pdf (3 pages, 161078 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 61 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
