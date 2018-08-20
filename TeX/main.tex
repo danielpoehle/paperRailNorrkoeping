@@ -1,120 +1,122 @@
-\documentclass[final]{siamltex}
-%	[12pt,	% Schriftgroesse
-%	a4paper,	% Papiergroesse
-%	twoside,	% zweiseitig
-%	DIV11,		% Verhaeltnis von Rand zu Text (groesser=mehr Text)
-%	BCOR10mm,	% Korrekturen fuer Druck
-%	abstracton,	% Ueberschrift bei abstract&acknowledgments
-%	openright,	% auf rechter Seite anfangen
-%	footexclude=false,	% ???
-%	draft]		% Fuer erste Versionen (spaeter final)
-%	pointlessnumbers,	% macht die Punkte hinter der Kapitelnummer weg
-%	final]		% siehe oben
-%	{scrreprt}	% Klasse: deutscher Report
-%	{report}		% amerikanischer Report
+% If you use pdflatex to compile this file, 
+\documentclass[10pt,a4paper,oneside,onecolumn]{article}
+% Else if you use latex and dvipdfmx to compile this file, 
+%\documentclass[10pt,a4paper,oneside,onecolumn,dvipdfmx]{article}
+% Else if you use latex and dvipdfm to compile this file, 
+%\documentclass[10pt,a4paper,oneside,onecolumn,dvipdfm]{article}
+% If you use a DVI viewer, e.g. dviout for Windows, 
+%\documentclass[10pt,a4paper,oneside,onecolumn,dviout]{article}
 
-\usepackage{amsmath,amssymb,amstext}
-\usepackage{graphicx}
-\usepackage{subfigure}
-\usepackage[dvips]{epsfig}
-\usepackage{texdraw}
-\usepackage{color}
-\usepackage{url}
-\usepackage[ruled,vlined]{algorithm2e}
-\usepackage{placeins}
-\usepackage{algorithmic}
-\usepackage{multirow}
-\usepackage{tikz}								% Laedt das TikZ-Package (erlaubt das zeichnen von Graphen)
-\usetikzlibrary{arrows}					% erlaubt Pfeile mit TikZ zu zeichnen
-\usetikzlibrary{shapes}					% erlaubt ??? mit TikZ zu zeichnen
+% Use the ICROMA.sty package
+\usepackage{ICROMA}
+\usepackage{enumerate}
 
-\newtheorem{Theorem}{Theorem}[section]	% Damit sind dann Theorem, Korollar und Lemma definiert.
-\newtheorem{Cor}[Theorem]{Korollar}	    % Die Nummerierung erfolgt Kapitelweise.
-\newtheorem{Lemma}[Theorem]{Lemma}
-\newtheorem{Def}[Theorem]{Definiton}
-\newtheorem{Remark}[Theorem]{Remark}
-\newtheorem{Bsp}[Theorem]{Example}
+\setcounter{page}{1}
 
-\DeclareSymbolFont{msbm}{U}{msb}{m}{n}
-\DeclareMathSymbol{\N}{\mathalpha}{msbm}{'116}
-\DeclareMathSymbol{\R}{\mathalpha}{msbm}{'122}
-\DeclareMathOperator*{\argmax}{arg\,max}
+% Insert paper title
+\title{Scheduling}
+% Insert author name(s)
+\author{
+	Florian Dahms $^{\text{a}}$, 
+	Anna-Lena Frank $^{\text{b}}$, 
+	Sebastian K\"uhn $^{\text{b}}$,
+	Daniel P\"ohle $^{\text{b,1}}$
+}
+% Insert affiliation information
+\affiliation{
+	$^{\text{a}}$ ???, ??? \\
+	???, 60??? Frankfurt am Main, Germany \\
+	$^{\text{b}}$ neXt lab, I.NMF 32, DB Netz AG \\
+	Rotfederring 9, 60327 Franfurt am Main, Germany \\
+	$^{\text{1}}$ E-mail: Daniel.Poehle@deutschebahn.com, Phone: +49 (0) 69 265 ???
+}
 
-%\def\ds{\displaystyle}
-
-%\newcommand{\todo}[1]{\par \vspace{2mm}\centerline{\fbox{\fbox{\bf #1}}}\vspace{2mm}}
-
-\newcommand{\abs}[1]{\ensuremath{ \left\lvert {#1} \right\rvert} }	% Betrag
-\newcommand{\st}{\ensuremath{\text{s.t.}} }		% subject to für Optimierungsproblem
-%\newcommand{\N}{\ensuremath{\mathbb{N}}}			% Mengen N
-\newcommand{\Z}{\ensuremath{\mathbb{Z}}}			% Mengen Z
-%\newcommand{\R}{\ensuremath{\mathbb{R}}}			% Mengen R
-\newcommand{\B}{\ensuremath{\mathbb{B}}}			% Menge B (binaere Zahlen)
-\newcommand{\T}{\ensuremath{\text{T}} }				% T für transponiert
-
-\newcommand\nn{\nonumber}					% Keine Gleichungsnummer
-
-\renewcommand{\d}{\ensuremath{\hspace{-0.7mm}\text{d}} }	% d für Integral dr oder dt
-
-
-\numberwithin{equation}{section}
+%\usepackage{amsmath,amssymb,amstext}
+%\usepackage{graphicx}
+%\usepackage{subfigure}
+%\usepackage[dvips]{epsfig}
+%\usepackage{texdraw}
+%\usepackage{color}
+%\usepackage{url}
+%\usepackage[ruled,vlined]{algorithm2e}
+%\usepackage{placeins}
+%\usepackage{algorithmic}
+%\usepackage{multirow}
+%\usepackage{tikz}								% Laedt das TikZ-Package (erlaubt das zeichnen von Graphen)
+%\usetikzlibrary{arrows}					% erlaubt Pfeile mit TikZ zu zeichnen
+%\usetikzlibrary{shapes}					% erlaubt ??? mit TikZ zu zeichnen
+%
+%\newtheorem{Theorem}{Theorem}[section]	% Damit sind dann Theorem, Korollar und Lemma definiert.
+%\newtheorem{Cor}[Theorem]{Korollar}	    % Die Nummerierung erfolgt Kapitelweise.
+%\newtheorem{Lemma}[Theorem]{Lemma}
+%\newtheorem{Def}[Theorem]{Definiton}
+%\newtheorem{Remark}[Theorem]{Remark}
+%\newtheorem{Bsp}[Theorem]{Example}
+%
+%\DeclareSymbolFont{msbm}{U}{msb}{m}{n}
+%\DeclareMathSymbol{\N}{\mathalpha}{msbm}{'116}
+%\DeclareMathSymbol{\R}{\mathalpha}{msbm}{'122}
+%\DeclareMathOperator*{\argmax}{arg\,max}
+%
+%%\def\ds{\displaystyle}
+%
+%%\newcommand{\todo}[1]{\par \vspace{2mm}\centerline{\fbox{\fbox{\bf #1}}}\vspace{2mm}}
+%
+%\newcommand{\abs}[1]{\ensuremath{ \left\lvert {#1} \right\rvert} }	% Betrag
+%\newcommand{\st}{\ensuremath{\text{s.t.}} }		% subject to für Optimierungsproblem
+%%\newcommand{\N}{\ensuremath{\mathbb{N}}}			% Mengen N
+%\newcommand{\Z}{\ensuremath{\mathbb{Z}}}			% Mengen Z
+%%\newcommand{\R}{\ensuremath{\mathbb{R}}}			% Mengen R
+%\newcommand{\B}{\ensuremath{\mathbb{B}}}			% Menge B (binaere Zahlen)
+%\newcommand{\T}{\ensuremath{\text{T}} }				% T für transponiert
+%
+%\newcommand\nn{\nonumber}					% Keine Gleichungsnummer
+%
+%\renewcommand{\d}{\ensuremath{\hspace{-0.7mm}\text{d}} }	% d für Integral dr oder dt
+%
+%
+%\numberwithin{equation}{section}
 
 %\newcommand{\my}[1]{{\bf TODO #1}}
 %\newcommand{\eqdach}{\stackrel{\wedge}{=}}
 
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}} % -> footnote is not allowed
 %\renewcommand{\qedsymbol}{qed}
 
-\graphicspath{{Bilder/}}		% path to look for (eps)-pictures
+%\graphicspath{{Bilder/}}		% path to look for (eps)-pictures
 
-\title{Scheduling}
-%\thanks{This work was financially supported by BMI, Project DigiKap, FKZ ???.}}
-\author{
-Florian Dahms\thanks{???, ???, Frankfurt, Germany} ({\tt dahms@???.de})
-\and Anna-Lena Frank\thanks{I.NMF 32, DB Netz AG, Frankfurt am Main, Germany} ({\tt Anna-Lena.Frank@deutschebahn.com, Sebastian.Se.Kuehn@deutschebahn.com, Daniel.Poehle@deutschebahn.com})
-\and Sebastian K\"uhn\footnotemark[2]
-\and Daniel P\"ohle\footnotemark[2]}
 
 
 \begin{document}
+% Pagenumbering is removed (for proceeding generation)
 
 \maketitle
 
 \begin{abstract} %% Not more than 250 words
-In this article, we discuss the optimization of
-a linearized traffic flow network model based on conservation laws.
-We present two solution approaches. One relies on the classical Lagrangian formalism
-(or adjoint calculus), whereas another one uses a discrete mixed-integer framework.
-We show how both approaches are related to each other theoretically.
+In this article, we discuss the optimization of a train scheduling problem as well as its usage via an app.
 Numerical experiments are accompanied to show the quality of solutions.
 \end{abstract}
 
-\begin{keywords}
-traffic networks, network optimization
-\end{keywords}
+% Insert 3 - 5 keywords
+\keywords{
+	traffic networks, network optimization
+}
 
-\begin{AMS}
-90B20, 90C11
-% 90B20 Traffic problems, 90C11 Mixed integer programming
-\end{AMS}
-
-\pagestyle{myheadings}
-\thispagestyle{plain}
-\markboth{F. DAHMS, A-L. FRANK, S. K\"UHN AND D. P\"OHLE}{SCHEDULING}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{extendedAbstract}
+\input{extendedAbstract} % Between 750 and 2000 words, up to 10 references
 
-\input{introduction}
+% Full paper (not more than 10 pages)
+%\input{introduction}
 
-\input{modelling}
+%\input{modelling}
 
-\input{optproblem}
+%\input{optproblem}
 
-\input{mip}
+%\input{mip}
 
-\input{numerics}
+%\input{numerics}
 
 %\input{outlook}
 
@@ -124,9 +126,58 @@ This work was financially supported by BMI, Project DigiKap, FKZ ???.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\bibliographystyle{plain}
-\bibliographystyle{siam}
-\bibliography{Bibliographie}
+\begin{thebibliography}{99}
+	\setlength{\itemsep}{0\parskip}
+	
+	\bibitem[Bailey(1995)]{Bailey:1995} 
+	Bailey,~C.~(ed.), 1995. 
+	{\em European Railway Signalling}, 
+	Institution of Railway Signal Engineers (IRSE), 
+	A\&C Black, London.
+	
+	\bibitem[Goverde and Hansen(2000)]{Goverde:2000a} 
+	Goverde,~R.M.P., Hansen,~I.A., 2000. 
+	``TNV-prepare: analysis of Dutch railway operations 
+	based on train detection data", 
+	In: Allan,~J., Hill,~R.J., Brebbia,~C.A., Sciutto,~G., Sone,~S.~(eds.), 
+	{\em Computers in Railways VII}, 
+	pp.~779--788, 
+	WIT Press, Southampton.
+	
+	\bibitem[Goverde and Soto~y~Koelemeijer(2000)]{Goverde:2000b} 
+	Goverde,~R.M.P., Soto~y~Koelemeijer,~G., 2000. 
+	{\em Performance Evaluation of Periodic Railway Timetables: 
+		Theory and Algorithms},
+	TRAIL Studies in Transportation Science, 
+	Delft University Press, Delft.
+	
+	\bibitem[Hansen(1999)]{Hansen:1999} 
+	Hansen,~I.A., 1999. 
+	``Seamless container transport by rail", 
+	{\em Rail International}, 
+	vol.~30, pp.~7--16.
+	
+	\bibitem[Huckin and Olsen(1991)]{Huckin:1991} 
+	Huckin,~T.N., Olsen,~L.A., 1991. 
+	{\em Technical Writing and Professional Communication 
+		for Nonnative Speakers of English}, 
+	2nd Edition, McGraw-Hill, New York.
+	
+	\bibitem[Serafini and Ukovich(1989)]{Serafini:1989} 
+	Serafini,~P., Ukovich,~W., 1989. 
+	``A mathematical model for periodic scheduling problems", 
+	{\em SIAM Journal on Discrete Mathematics}, 
+	vol. 2, pp. 550-581. 
+	http://dx.doi.org/10.1137/0402049
+	
+	\bibitem[Tamura et~al.(2013)]{Tamura:2013} 
+	Tamura,~K., Tomii,~N., Sato,~K., 2013. 
+	``An optimal rescheduling algorithm from passengers' viewpoint 
+	based on Mixed Integer Programming formulation", 
+	In: {\em Proceedings of The 5th International Seminar 
+		on Railway Operations Modelling and Analysis (RailCopenhagen2013)}, 
+	Lyngby, Denmark.
+\end{thebibliography}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

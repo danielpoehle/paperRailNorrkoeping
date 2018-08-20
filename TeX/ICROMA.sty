@@ -1,0 +1,115 @@
+% LaTeX2e style file for manuscripts submitted to ICROR
+%
+% ******** Version *****************************************
+% Ver.2.1: October   2014, for 6th ICROR (RailTokyo2015) 
+%                              and new/revised submission to JRTPM
+% Ver.2.0: September 2014, for 6th ICROR (RailTokyo2015)
+% Keisuke Sato
+% Signalling and Transport Information Technology Division
+% Railway Technical Research Institute
+% E-mail: keisato [at] rtri [dot] or [dot] jp
+%
+% Ver.1.0: February  2002, (c) Delft
+% Rob M.P. Goverde
+% Transport and Planning Section
+% Faculty of Civil Engineering
+% Delft University of Technology
+% Stevinweg 1, 2628 CN Delft, The Netherlands
+% E-mail: goverde [at] ct [dot] tudelft [dot] nl
+%
+% This files contains the layout definitions for TRAIL Publications
+% according to the prescriptions of the Delft University Press (DUP).
+% See the template 'trailtpl.tex' for instructions on how to use these definitions.
+% DO NOT MAKE ANY CHANGES !!!
+
+
+% ******** Used packages ***********************************
+\usepackage{epsf}
+\usepackage{amstext}
+\usepackage{epsfig}
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{times}
+\usepackage{natbib}
+
+\usepackage[utf8]{inputenc}%raillille2017%georges.mariano@ifsttar.fr
+%\usepackage{fullpage}
+
+% ******** Margins and page settings ***********************
+\setlength{\voffset}{-1in}
+\setlength{\topmargin}{0mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{48.5mm}
+\setlength{\footskip}{13.5mm}
+\setlength{\textheight}{200mm}
+
+\setlength{\hoffset}{-1in}
+\setlength{\oddsidemargin}{41mm}
+\setlength{\evensidemargin}{41mm}
+\setlength{\textwidth}{128mm}
+
+\setcounter{secnumdepth}{2}
+
+
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{-\baselineskip}{\baselineskip}{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}{-\baselineskip}{\baselineskip}{\normalfont\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0pt}{-\baselineskip}{0.1mm}{\normalfont\bfseries}}
+
+\def\affiliation#1{\gdef\@affiliation{#1}}
+\def\@affiliation{\@latex@error{No \noexpand\affiliation given}\@ehc}
+
+\renewcommand\maketitle{\par
+  \begingroup
+    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+    \long\def\@makefntext##1{\parindent 1em\noindent
+            \hb@xt@1.8em{%
+                \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+    \newpage
+    \global\@topnum\z@   % Prevents figures from going at top of page.
+    \@maketitle
+    \thispagestyle{plain}\@thanks
+  \endgroup
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@affiliation\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\affiliation\relax
+  \global\let\and\relax
+}
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip \baselineskip%
+  \begin{center}%
+  \let \footnote \thanks
+    {\bfseries\Large \@title \par}%
+    \vskip \baselineskip%
+    {\large
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \normalsize\@affiliation
+  \end{center}%
+  \par
+  \vskip \baselineskip}
+
+\renewenvironment{abstract}{%
+  \setlength{\parindent}{0pt}
+  {\bfseries\abstractname\par}}{%
+  \vskip\baselineskip}
+
+\def\keywords#1{%
+  {\setlength{\parindent}{0pt}
+  {\bfseries Keywords \par}%
+  {#1 \par}}%
+  \vskip\baselineskip}
+
+\pagenumbering{gobble}%raillille2017%georges.mariano@ifsttar.fr
+
