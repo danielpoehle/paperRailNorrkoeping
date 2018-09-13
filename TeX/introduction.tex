@@ -1,43 +1,5 @@
 \section{Introduction}
 \label{chap:intro}
 
-Modeling, simulation and optimization of traffic flow networks based on partial differential equations have been investigated intensively during the last years, 
-see for instance for an overview~\cite{CoclitePiccoli, FuegenschuhHertyKlarMartin_MIP, HertyKlar2003, HertyKlar2004, HoldenRisebro, KlarKuehneWegener1996, LighthillWhitham}. 
-
-For optimization purposes, different applications such as optimal routing of traffic at intersections~\cite{ FuegenschuhHertyKlarMartin_MIP, HertyKlar2003, HertyKlar2004}, traffic light control~\cite{GoettlichHertyZiegler2012}, evacuation planning~\cite{NHM, Hamacher} and air traffic control~\cite{BayenRaffardTomlin} are of interest. 
-Since in all problems the underlying optimization problem is restricted by nonlinear partial differential equations, 
-relaxed models with simplified dynamics have been investigated. In this context, two different solution approaches emerge.
-On the one hand, nonlinear continuous optimization techniques have been successfully applied. 
-To compute the optimum, the first order optimality system is derived and solved by a descent type method, see~\cite{Kelley1999, NashSofer1996, Spellucci1993}. 
-On the other hand, suitable discretization of the dynamics leads to linear network flow models that have been widely considered in the field of combinatorial optimization~\cite{Carey2000157, Fleischer_Tardos, ford1958, koehler2005_load}.
-
-In fact, there exist a few research results comparing both optimization tools,
-%to balance computability of large networks and correct dynamics described by partial differential equations by using a mixed integer (MIP) approach.
-see~\cite{SimonesBuch, DomschkeGeisslerKolbLangMartinMorsi2011, Fuegenschuh_et_al_MIP, FuegenschuhHertyKlarMartin_MIP, SunStrubBayen2007}. 
-One might assume that a one-to-one relation between nonlinear continuous and discrete optimization techniques holds true.
-This is especially the case when the governing dynamics in the network are linear. 
-%in the state (but not in the control) variables. 
-Then, appropriate numerical discretizations can be chosen, such that the original optimization problem 
-either leads to numerically solving the finite-dimensional optimality system, i.e.\ the so-called {\em discretize-then-optimize approach},
-or the interpretation as a mixed-integer programming model (MIP). However, it remains the question of detecting local or global optima. 
-We know from the theory of linear programming, in particular the strong duality theorem~\cite{Chvatal1983, NemhauserWolsey1988, Schrijver1986},
-that under certain circumstances a global optimum can be reached. This is usually not the case for the adjoint calculus. The solution of the optimality system 
-via gradient methods often gets stuck in local optima.
-
-In this work we want to close the gap between the two solution procedures that first appear to be quite varied.
-To do so, we start with the traffic flow network model where the evolution of traffic density on roads is governed by
-the linearized Lighthill-Whitham-Richards (LWR) equations, see~\cite{DApiceManzoPiccoli2006}.
-For the coupling conditions at the intersections, we stick to the ones presented by Coclite-Garavello-Piccoli~\cite{CoclitePiccoli} 
-but do not use a predefined distribution matrix since these parameters will be obtained as solutions of the optimization problem.
-In a next step, we discretize the full network model in space and time and formally derive the adjoint equations and the mixed-integer
-model (MIP) as well. We show the equivalence of both approaches by comparing the dual variables of the MIP and the adjoint variables. 
-A formal, detailed proof for a simple network is given. Finally, we compare the optimization results of the MIP and the adjoint equations 
-for different networks and objective functions numerically.
-
-The paper is organized as follows: Section \ref{chap:modelling} contains a description of the network and the models used for describing flow on roads. 
-Section \ref{chap:optimization_problem} introduces the optimization problem to be considered. Herein, we also present the main theorem of this article, which we prove in the following sections. 
-In section \ref{chap:adjoints}, the adjoint equations for the former optimization problem are derived. % from the Lagrangian function. 
-Thereafter, the mixed-integer model is introduced in section \ref{chap:mip}. In section~\ref{chap:MIP_dual}, we conclude
-the proof of our main theorem. Numerical examples are given in section~\ref{chap:numerics}. 
 
 

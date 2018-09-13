@@ -6,7 +6,7 @@
   \item assemble to order for capacity planning
   \item 3\%, 5\%, 3 min C\&R-App
 \end{itemize}
-
+In this article, we point out how to transform the process of train scheduling from a make to order system to an assemble to order process. Therefore we apply a mesoscopic modelling approach introducing so-called Systemtrassen as a meassure of capacity in the railroad network. With this model we are able to realize two objectives of optimization. On the one hand we aim to gain more capacity on the tracks, i.e.\ there are more train paths available with our optimization model ompared to manual planing. ON the other hand we optimize the travel time of the generated train paths. In our numerical example we show that we are able to generate 3 \% more capacity and 5 \% faster train paths compared to manual planing. The benefits from the optimization approach are not only twofold but threefold. Due to the transformation to an assemble to order process we are addiontionally able to present an app which is able to provide individual train paths within three minutes. We also present an use case for this app as a customer friendly tool for the last minute, i.e.\ 72 hours before departure of the train, sales of train paths.
 \subsection{literature}
 \begin{itemize}
   \item TAKT
@@ -25,7 +25,7 @@
   \item digital infrastructure model
   \item timetable of passenger trains
 \end{itemize}
-
+For our numerical example we consider the scheduling problem for freight trains in Germany. As the reference date we consider the 14th of November 2013 for the whole timetabling problem and 14th to 16th of November 2013 for the app. In both cases we consider the infrastructure of the German railroads as operated by DB Netz from those day or days, resp.. Therefore we rely on the digital infrastructure model callled Spurplan as reference, which we transform into a more suitable representation for our purpose using graph structures. As we concentrate on freight trains only, we consider all passenger trains as fixed blockages of the infrastructure. Therefore we reconstructed all \textit{Sperrzeiten} from 14th to 16th of September 2013 from the timetables of those days. Furthermore, we respect all directives, which were effective at that time in our optimization model.
 \subsection{practical relevance}
 \begin{itemize}
   \item release of C\&R-App in 2019 \\
