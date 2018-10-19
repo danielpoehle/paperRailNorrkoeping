@@ -1,29 +1,18 @@
 \section{Extended Abstract}
 \label{chap:extAbs}
 
-\textbf{Denke, dass die Unterkapitel weg sollten. Der extended abstract sollte ein Fließtext sein. Literatur muss dann über die einzelnen Teile verteilt eingebaut werden.}
-
-\subsection{Problem and Objectives}
 We consider two related train scheduling problems. On the one hand every year a timetable of preordered freight trains needs to be scheduled, such that all orders are satisfied, while minimizing travel times of each train. This problem will be referred to as the ``Netzfahrplan''-problem. On the other hand we need to satisfy ad-hoc orders which are coming in throughout the year. This constitutes an online optimization problem, where each request again needs to be satisfied, such that its travel time is minimized. In order to provide a good customer service we need to be able to create a scheduled train for each incoming request in less than 3 minutes. This will allow the algorithm to be part of a new digital product called the ``Click \& Ride''-App, therefore we will refer to this problem as the C\&R-problem.
 
-Due to the incoming requests throughout the year it is not sufficient to only minimize the travel times of the trains. We also need to schedule each train in a capacity preserving way such that the likelihood of being able to satisfy future requests remains high. In order to optimize the available capacity we use so-called ``Systemtrassen'' as a measure of capacity in the railroad network (\textbf{TODO: literature reference for Systemtrassen}). Systemtrassen are preconstructed train schedules for certain parts of the infrastructure. Incoming requests are then assembled partially from Systemtrassen and partially from parts which are calculated ``on-the-fly''.
+Due to the incoming requests throughout the year it is not sufficient to only minimize the travel times of the trains. We also need to schedule each train in a capacity preserving way such that the likelihood of being able to satisfy future requests remains high. In order to optimize the available capacity we use slots, so-called ``Systemtrassen'', as a measure of capacity in the railroad network (see \cite{FP:2014}). Systemtrassen are preconstructed train schedules for certain parts of the infrastructure. Incoming requests are then assembled partially from Systemtrassen and partially from parts which are calculated ``on-the-fly''.
 In this way we transform the process of train scheduling from a microscopic ``make-to-order'' to a mesoscopic ``assemble-to-order'' system.
 
-In our numerical examples we show that we are able to increase the available capacity, i.e., the number of possible trains being scheduled, while reducing the average travel time. Due to the automation of the entire process we are additionally able to present an app which is able to provide individual train schedules within three minutes. We also present a use case for this app as a customer friendly tool for sales of train schedules in the ``last minute'', i.e.,\ 72 hours before departure of the train.
+In our numerical examples we show that we are able to increase the available capacity, i.e., the number of possible trains being scheduled, while reducing the average travel time. Due to the automation of the entire process we are additionally able to present an app which is able to provide individual train schedules within three minutes. We also present a use case for this app as a customer friendly tool for sales of train schedules in the ``last minute'', i.e.,\ 48 hours before departure of the train.
 
-\begin{itemize}
-  \item assemble to order for capacity planning
-  \item 3\%, 5\%, 3 min C\&R-App (TODO: Wollen wir die 3 und 5\% Ziele nennen, oder gehen wir auf Nummer sicher und lassen konkrete Zahlen raus?)
-\end{itemize}
+Different approaches for rail freight timetabling exist in the literature. Planning of slots was first introduced for cyclic timetables using a PESP by \cite{N:1998} and extended by \cite{O:2009}. \cite{G:2012} showed that the PESP can also be encoded as a SAT problem which leads to significantly lower computation times. For non cyclic timetables a mixed integer formulation was proven to work for practical problem sizes (\cite{G:2013}).
+The train path assignment problem as the second step after planning of slots was introduced by \cite{NO:2014} and extended for optimization with different traffic days (\cite{N:2015}). However, we need serious effort to transfer the optimization models from an acedemic backround to using them in a real world application.
 
-\subsection{literature}
-\begin{itemize}
-  \item TAKT
-  \item OpSysTra
-\end{itemize}
-
-\subsection{Innovation}
 As pointed out earlier, the innovation of our approach is threefold: First, we are able to generate more capacity of infrastructure without actually building it but by making better use of it. Second, by we are able to reduce travel time for most of the scheduled trains by taking the whole problem into account and using global optimization instead of manual, local optimization. Third, we reduce response times by implementing the first fully automated process in short-term capacity planing from ordering to the actual departure of the train. All resulting in a better customer value.
+<<<<<<< HEAD
 \begin{itemize}
   \item first infrastructure manager to use optimization models for freight train timetable planning
   \item customer value: shorter travel time, higher infrastructure capacity and faster response time
@@ -41,6 +30,11 @@ In our numerical experiments we focus on data from the 13th until 15th of Novemb
 \begin{itemize}
   \item release of C\&R-App in 2019 \\
 \end{itemize}
+=======
+
+In our numerical experiments we focus on data from the 13th until 15th of November 2013 for the ``Netzfahrplan''-problem and on data from the 13th until 16th of November 2013 for the C\&R-problem. In both cases we use data for the infrastructure of the German railroads as operated by DB Netz from those days. The digital infrastructure model we use as reference is known as ``Spurplan''. We transform this model into a more suitable representation for our purpose using graph structures. As we concentrate on freight trains only, we consider all passenger trains as fixed blockages of the infrastructure. Therefore we used all headway times from the timetables of those days. Furthermore, we respect all directives (\textbf{TODO: spezifischer}), which were effective at that time in our optimization model.
+
+>>>>>>> 8f076ee7fe3c69a1e2a90a14330cb01aa49b6753
 As explained earlier the C\&R-App gives the cargo customer a valid timetable after no more than three minutes. As for now the app is working as designed. However, the app is not used by customer yet since it is still in a evaluation phase, where bugs can be found and fixed. \\
 Nevertheless this situation changes next year as the release of the C\&R-App is planned. This is going to have an huge impact on the timetabling procedure as customers can then expect their timetables within three minutes. Today a manual short-term creation of a timetable may take up to 72 hours. Therefore many customers order their timetables a long time ahead, even though they might not know the exact details of the required train yet, or even if they will actually need the timetable at all at the requested time.
 For example, when reloading goods from a ship to a train, changes in the timetable of the ship will affect the actual departure time of the train, which is therefore hard to know far in advance and the expectation might not fit the actual time anymore. In order to provide a good service to the customer, the train will be disposed through the network at its actual departure anyway, but this practice creates instability during the operation of the train network.\\
