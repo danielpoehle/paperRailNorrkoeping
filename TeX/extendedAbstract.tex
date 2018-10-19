@@ -1,4 +1,4 @@
-\section{Extended Abstract}
+﻿\section{Extended Abstract}
 \label{chap:extAbs}
 
 We consider two related train scheduling problems. On the one hand every year a timetable of preordered freight trains needs to be scheduled, such that all orders are satisfied, while minimizing travel times of each train. This problem will be referred to as the ``Netzfahrplan''-problem. On the other hand we need to satisfy ad-hoc orders which are coming in throughout the year. This constitutes an online optimization problem, where each request again needs to be satisfied, such that its travel time is minimized. In order to provide a good customer service we need to be able to create a scheduled train for each incoming request in less than 3 minutes. This will allow the algorithm to be part of a new digital product called the ``Click \& Ride''-App, therefore we will refer to this problem as the C\&R-problem.
@@ -13,27 +13,9 @@ The train path assignment problem as the second step after planning of slots was
 
 As pointed out earlier, the innovation of our approach is threefold: First, we are able to generate more capacity of infrastructure without actually building it but by making better use of it. Second, by we are able to reduce travel time for most of the scheduled trains by taking the whole problem into account and using global optimization instead of manual, local optimization. Third, we reduce response times by implementing the first fully automated process in short-term capacity planing from ordering to the actual departure of the train. All resulting in a better customer value.
 
-\begin{itemize}
-  \item first infrastructure manager to use optimization models for freight train timetable planning
-  \item customer value: shorter travel time, higher infrastructure capacity and faster response time
-  \item first fully automated process in short-term capacity planning from ordering to the actual departure of the train
-\end{itemize}
-
-\subsection{Data}
-\begin{itemize}
-  \item digital infrastructure model
-  \item timetable of passenger trains
-\end{itemize}
 In our numerical experiments we focus on data from the 13th until 15th of November 2013 for the ``Netzfahrplan''-problem and on data from the 13th until 16th of November 2013 for the C\&R-problem. In both cases we use data for the infrastructure of the German railroads as operated by DB Netz from those days. We model the intrastucture in a suitable representation for our purpose using graph structures. As we concentrate on freight trains only, we consider all passenger trains as fixed blockages of the infrastructure. Therefore we reconstructed all headway times from 13th to 16th of September 2013 from the timetables of those days. Furthermore, we respect all directives e.g.\ buffer-times, which were effective at that time in our optimization model.
 
-\subsection{Practical relevance}
-\begin{itemize}
-  \item release of C\&R-App in 2019 \\
-\end{itemize}
-
-
 In our numerical experiments we focus on data from the 13th until 15th of November 2013 for the ``Netzfahrplan''-problem and on data from the 13th until 16th of November 2013 for the C\&R-problem. In both cases we use data for the infrastructure of the German railroads as operated by DB Netz from those days. The digital infrastructure model we use as reference is known as ``Spurplan''. We transform this model into a more suitable representation for our purpose using graph structures. As we concentrate on freight trains only, we consider all passenger trains as fixed blockages of the infrastructure. Therefore we used all headway times from the timetables of those days. Furthermore, we respect all directives (e.g. buffer times), which were effective at that time in our optimization model.
-
 
 As explained earlier the C\&R-App gives the cargo customer a valid timetable after no more than three minutes. As for now the app is working as designed. However, the app is not used by customer yet since it is still in a evaluation phase, where bugs can be found and fixed. \\
 Nevertheless this situation changes next year as the release of the C\&R-App is planned. This is going to have an huge impact on the timetabling procedure as customers can then expect their timetables within three minutes. Today a manual short-term creation of a timetable may take up to 72 hours. Therefore many customers order their timetables a long time ahead, even though they might not know the exact details of the required train yet, or even if they will actually need the timetable at all at the requested time.
