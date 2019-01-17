@@ -5,5 +5,22 @@ In this section we describe our modelling approach to automatically compute time
 \subsection{Konstruktion}
 \label{chap:Konstruktion}
 
+This section will give a brief overview of the process used for creating a train path. The entire process consists of three main steps. First we search one or more different routes through the infrastructure. In the second step we create a network of discrete building blocks (called snippets) along these routes for which we calculate travel and blocking times. Finally we put these snippets together to form a non conflicting train path.
+
+
+\subsubsection{Routing}
+
+To reduce the problem size, our first step consists of finding routes that could be relevant for the train. We use an A* algorithm for finding a shortest route, which utilizes geo coordinates for calculating the beeline distance as the lower bound. The infrastructure of Deutsche Bahn is divided into sections called ``Betriebstellen''. For each Betriebstelle we keep a list of all possible ways to traverse it. Each possibility is termed a ``Fahrweg''. The Fahrwege form a graph where each Fahrweg is a vertex, with directed edges indicating which Fahrweg is a direct successor of another. The edge costs are based on the Fahrwege lengths. But as certain Fahrwege are preferred to others we multiply the cost with factor which is closer to one for more desirable Fahrwege. This way the use of intersections and the use of tracks from the opposite direction can be discuraged. It is this graph we use of finding routes for our train paths.
+
+While exploring the graph the algorithm filters out all paths, which are incompatible with the characteristics of the train.
+As it is not always the best option to use the shortest path, we create multiple alternative routes. For searching the subsequent routes, we increase the costs of edges that where used in already found routes. A route is only accepted as a real alternative if it differs from all already calculated one in at least one Betriebstelle. We set an upper limit to the length of alterative routes which is a multiple ($1.3$ in the experiments) of the shortest route found.
+
+
+\subsubsection{Snippet Creation}
+
+
+\subsubsection{Train Path Calculation}
+
+
 \subsection{Belegung}
 \label{chap:Belegung}
