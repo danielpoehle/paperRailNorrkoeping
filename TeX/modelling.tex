@@ -28,6 +28,10 @@ As it is not always the best option to use the shortest path, we create multiple
 
 \subsubsection{Snippet Creation}
 
+For each route we calculate the travel and blocking times that would be required for a train using the route without intermediate stops. To enable stopping, we search for all tracks that could be used for a stop of the train along the route. A track is only considered for stopping, if it branches off the main route and joins it again within a single Betriebstelle. For each such track we create one snippet leading from the main route to the stop and one from the stop to the main route. These snippets have a length of $7$km, a length that ensures that acceleration and deceleration to and from the main travel speed is always possible within the snippet. For each snippet we again calculate travel and blocking times. In order to connect these snippets with the main route, we cut it into snippets at the points where our stopping snippets branch off it or join it back. In addition to these stop snippets we snippets for alternative non stopping traversals of a Betriebstelle for all tracks that traverse the Betriebstelle similar to the original main route.
+
+This way we get a directed graph of snippets representing the possible ways the train can travel along each route including intermediate stops. Each snippet has travel and blocking times calculated. A path from a source snippet (those without predecessors) to a sink snippet (without successors) will always represent a valid train path (without a specific starting time of the train).
+
 
 \subsubsection{Train Path Calculation}
 
