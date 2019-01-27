@@ -38,6 +38,10 @@ As it is not always the best option to use the shortest path, we create multiple
 	\textcolor{red}{TODO by SK}
 \begin{itemize}
 	\item Belegung kurz beschreiben ($\leq$1Seite)
+	\item EAPkte DONE
+	\item Wegesuche Erster Versuch
+	\item VNI OPEN
+	\item Optimization Erster Versuch
 \end{itemize}
 }
 As a result of the train path calculation described in the previous section (Section~\ref{chap:Konstruktion}), we are provided with a directed graph \G\, in which the Systemtrassen and \emph{\textcolor{red}{Spurplanknoten or BST}} form the arcs and the nodes, respectively. In a process consisting of four steps, this graph is used to assign train paths to the requests made by customers. First, we map the requests of the customer to the graph \G, resulting in so-called \emph{break-in} and \emph{break-out points}. Then, we search for the shortest path using Systemtrassen In the third part, we calculate train paths from the start of a request to the break-in point and from the break-out point to the goal of the request. Finally, we optimize the result for all requests using a column generation approach.
