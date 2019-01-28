@@ -10,8 +10,8 @@ In this section we briefly describe our modelling approach to automatically comp
 \begin{itemize}
 	\item Konstruktion kurz beschreiben ($\leq$1Seite)
 	\item Routing \textbf{DONE}
-	\item snippet creation \textbf{OPEN}
-	\item train path calculation \textbf{OPEN}
+	\item snippet creation \textbf{DONE}
+	\item train path calculation \textbf{DONE}
 \end{itemize}
 }
 
@@ -28,12 +28,16 @@ As it is not always the best option to use the shortest path, we create multiple
 
 \subsubsection{Snippet Creation}
 
-For each route we calculate the travel and blocking times that would be required for a train using the route without intermediate stops. To enable stopping, we search for all tracks that could be used for a stop of the train along the route. A track is only considered for stopping, if it branches off the main route and joins it again within a single Betriebstelle. For each such track we create one snippet leading from the main route to the stop and one from the stop to the main route. These snippets have a length of $7$km, a length that ensures that acceleration and deceleration to and from the main travel speed is always possible within the snippet. For each snippet we again calculate travel and blocking times. In order to connect these snippets with the main route, we cut it into snippets at the points where our stopping snippets branch off it or join it back. In addition to these stop snippets we snippets for alternative non stopping traversals of a Betriebstelle for all tracks that traverse the Betriebstelle similar to the original main route.
+For each route we calculate the travel and blocking times that would be required for a train using the route without intermediate stops. To enable stopping, we search for all tracks that could be used for a stop of the train along the route. A track is only considered for stopping, if it branches off the main route and joins it again within a single Betriebstelle. For each such track we create one snippet leading from the main route to the stop and one from the stop to the main route. These snippets have a length of $7$km, a length that ensures that acceleration and deceleration to and from the main travel speed is always possible within the snippet. For each snippet we again calculate travel and blocking times. In order to connect these snippets with the main route, we cut it into snippets at the points where our stopping snippets branch off it or join it back. In addition to these stop snippets we snippets for alternative non stopping traversals of a Betriebstelle for all tracks that traverse the Betriebstelle similar to the original main route. Sometimes it can be beneficial for a train to travel with less than its maximum speed to match the speed of a preceeding train without stopping unnecessarily. To enable this we create alternatives of each snippet with reduced maximum speeds.
 
-This way we get a directed graph of snippets representing the possible ways the train can travel along each route including intermediate stops. Each snippet has travel and blocking times calculated. A path from a source snippet (those without predecessors) to a sink snippet (without successors) will always represent a valid train path (without a specific starting time of the train).
+This way we get a directed, acyclic graph of snippets representing the possible ways the train can travel along each route including intermediate stops. Each snippet has travel and blocking times calculated. A path from a source snippet (those without predecessors) to a sink snippet (without successors) will always represent a valid train path (without a specific starting time of the train).
 
 
 \subsubsection{Train Path Calculation}
+
+The last step to calculate the train path is to determine a starting time and a path through the snippet graph such that no blocking time is in conflict with another train path and the number of stops is minimized. For each snippet we can calculate the possible departure times of the snippet that are not conflicting with other trains by projecting the blocking times of other trains back to the snippets start. This way we get a list of intervals for each snippet where each interval represents the allowed start times. Next we reduce the intervals further to ensure that only such intervals remain that can be reached by one of the snippets predecessors. For each snippets we calculate the possible arrival times given the known departure intervals. Note that for a snippet not ending in a stop, the resulting intervals will have the same length but are shifted by the travel time of the snippet. For stopping snippets the intervals can increase in size as long as the stop is not used by a different train. For each snippet we take the union of all its predecessors arrival intervals and intersect them with the possible departures of the snippet. This yields the new departure times of the snippet. As the snippet graph is directed and acyclic, we can find a topological ordering of the snippets such that this reduction of departure times needs to be done only once per snippet.
+
+The possible arrival times of the sink snippets will now be such that there must exist a non conflicting valid train path arriving at the given time. We calculate train paths by choosing the earliest arrival time. For a given arrival time we can select the predecessor snippets that have a compatible departure time. From those we select those that lead to the least number of stops (we prefer non stopping predecessors) first and then to the latest departure. The resulting train path is guaranteed to be conflict free, while keeping the number of stops and travel time low. The algorithm runs sufficiently fast, requiring $\mathcal{O}(m+n)$ calculations where $m$ is the number of snippets and $n$ is the number of edges in the snippet graph.
 
 
 \subsection{train path assignment}
