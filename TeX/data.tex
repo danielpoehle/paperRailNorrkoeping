@@ -41,6 +41,10 @@ As our approach is for freight traffic only, the passenger transport is also an 
 \\
 For the Belegungspart the actual customers' requests and the Systemtrassen are needed. A customers' request consists of the information from where to where he wants to drive, where the train has to stop, the charakteristic of the train and so on.\\
 
+\textcolor{blue}{Customer Requests consist of the running points, time requirements and the characteristics of the train. The running points are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other running points. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train.}
+
+\textcolor{blue}{The difference between the two use cases is the set of customer requests. For the Netzfahrplan the set is fixed and equals all those trains which were requested for November, 14th 2013. In contrast, for the app only one request is provided to the algorithms at a time.}
+
 
 \subsection{Data for Click \& Ride App}
 \label{chap:dataCnR}

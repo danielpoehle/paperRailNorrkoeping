@@ -2,4 +2,15 @@
 \label{chap:intro}
 \textbf{
 	\textcolor{red}{TODO by SK}
+	\begin{itemize}
+		\item Check for consistent use of timetable! (Not time table)
+		\item Check for consistent use of creation of timetable instead of timetabling $\rightarrow$ tbd
+	\end{itemize}
 }
+The usual process of creating a timetable, especially for freight trains, is a manual \emph{make-to-order} process. But as \cite{FP:2014} already pointed out: It is necessary to overcome the manual process to be able to find global optimal solutions in an industrialized creation of timetables as the amount of data to be processed is steadily increasing. Additionally, in order to improve the efficiency of the process of creating a timetable as well as making better use of the available infrastructure it is convenient to transform the process to an \emph{assemble-to-order} process.
+
+This transformation as well as different approaches for an automatic creation of rail freight timetables have been widely discussed in the literature. Planning of slots was first introduced for cyclic timetables using a PESP by \cite{N:1998} and extended by \cite{O:2009}. \cite{G:2012} showed that the PESP can also be encoded as a SAT problem which leads to significantly lower computation times. For non cyclic timetables, \cite{G:2013} proved that a mixed integer formulation works for practical problem sizes. The train path assignment problem as the second step after planning of slots was introduced by \cite{NO:2014} and extended for optimization with different traffic days \cite{N:2015}. 
+
+In the actual paper, we point out the academic models mentioned above can be transformed into an application in real world optimization with an innovation that is threefold: First, we are able to generate more capacity of infrastructure without actually building it but by making better use of it. Second, we are able to reduce the travel time for most of the scheduled trains by simultaneously considering all requests and using global optimization instead of manual, local optimization. Third, we reduce response times by implementing the first fully automated process in short-term capacity planing from ordering to the actual departure of the train. All resulting in a better customer value.
+
+The organization of the paper is as follows. First, we describe the modelling approach in Section~\ref{chap:methods}. After that, we describe the set of data used for our experiments (Section~\ref{chap:data}) and discuss the use case as well as the experiments in Section~\ref{chap:useCases}. We close with an outlook (Section~\ref{chap:outlook}) to possible extensions of our approach in the future.
