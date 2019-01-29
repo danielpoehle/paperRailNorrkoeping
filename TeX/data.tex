@@ -6,7 +6,7 @@ In section 3.1 the data for creating a timetable in advance are described and se
 \subsection{Data Netzfahrplan}
 \label{chap:dataFinVe}
 To create a timetable in advance you need several input data for the Konstruktions and Belegungs part, which are described in this section. \\
-For the Konstuktion part we need the infrastructure on which we want to create the timetable and all requirements for the systemization, the so called "Systemtrassenanforderungen", which defines the network where the automatic timetable takes place, the standardized train characteristics and the daily load curve. 
+For the Konstuktion part we need the infrastructure on which we want to create the timetable and all requirements for the slot, the so called "Systemtrassenanforderungen", which defines the network where the automatic timetable takes place, the standardized train characteristics and the daily load curve. 
 
 \subsubsection{Infrastructure}
 The infrastructure represents the digital representation of the german railyway network. It contains all information which are needed to construct an timetable, e.g. the priorities of the track or the length of an freight stop.\\
@@ -22,6 +22,11 @@ The requirements of systemization defines first of all the systemized network wh
 	%The start and end point of one STA Abschnitt should be in one railway station where one train has the opportunity to synchronize with another one. Hence, one Sytemtrasse can wait in that railway station for another.  
 	
 	\textbf{\textcolor{red}{Falls noch Platz, könnte hier die STA-Karte eingefügt werden}}
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Bilder/STA-Karte.jpg}
+	\caption{The blue edges show the systemized network}
+	\end{figure}
 	
 	\item[2)] STA-Characteristic \\
 	The STA-Charakteristics define the standardized charakteristics on the systemized network. They were created by breaking down the forecast of the customers' request for the specific year. \\
