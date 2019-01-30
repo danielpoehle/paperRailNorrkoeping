@@ -1,15 +1,7 @@
 \section{Use Cases and Numerical Experiments}
 \label{chap:useCases}
-<<<<<<< HEAD
-In this section, we describe the use cases which were used to proof that our approach for the automatic opitimized creation of railway timetables performes. 
 
-\begin{itemize}
-	\item[1)] Anwering a short-term train path request within three minutes
-	\item[2)] Creating a timetable for one day 
-\end{itemize}
-=======
 In this section, we describe two use cases (Section~\ref{chap:CnR} and~\ref{chap:Netzfahrplan}) to which we are able to apply the methods mentioned before. For each use case we provide numerical experiments showing the threefold benefit of faster response times, increased capacity usage and reduced travel times.
->>>>>>> e526041c494212ee1d2b8d7f41bb0804cf9acc09
 
 \subsection{Click \& Ride App}
 \label{chap:CnR}
@@ -56,14 +48,8 @@ The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of 
 
 \subsection{Netzfahrplan}
 \label{chap:Netzfahrplan}
-<<<<<<< HEAD
-To create an automatic timetable for one day first you need to calculate the slots, where each slot starts and ends in one Betriebsstelle. Also every slot has up to three different train charakteristics and an amount of how many slots of which charakteristic are supposed to be produced. Those infomartion are necessary to preproduce a optimal set of slots with their most variety for the trainpath assignement.  \\
-The second step is the train path assignment which needs the customer request. A customer request consist of the running points, time requirements and the characteristics of the train. The running points are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other running points. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train.  \\
-To discuss the solution of our process we created the slots for the european rail freight corridor one. Corridor one is the Rhine-Alpine Corridor stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. During the course it passes five different countrys: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany Emmerich/Aachen to Basel will be considered. (see picture XXX). \\
 
-
-=======
-The introduced methods also allow to change the process of the \emph{Netzfahrplan}, which is the process of creating a timetable for a whole year. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $40$ days. This means a huge effort to DB Netz and can be eased b< planing the freigth trains automatically In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. After that, the timetables are adapted and improved, iteratively.
+The introduced methods also allow to change the process of the \emph{Netzfahrplan}, which is the process of creating a timetable for a whole year. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $40$ days. This means a huge effort to DB Netz and can be eased by planing the freigth trains automatically. In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. After that, the timetables are adapted and improved, iteratively.
 
 \textbf{\textcolor{red}{Falls noch Platz, könnte hier das Schaubild hinzufügen}}
 
@@ -73,7 +59,6 @@ For this experiment we also consider the data from NOvember, 14th, 2013 regardin
 FIGURE / TABLE RESULTS
 
 Table/Figure shows that we increase the number ... DISCUSS RESULTS
->>>>>>> e526041c494212ee1d2b8d7f41bb0804cf9acc09
 %
 \begin{table}[h]
 	\centering
