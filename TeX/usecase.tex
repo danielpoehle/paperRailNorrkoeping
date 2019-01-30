@@ -22,7 +22,19 @@ For a short-term train path request, e.g. a train run for the next day, we can i
 	\label{fig:process_sequence}
 \end{figure}
 
-Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the backend processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a line with no overhead line. If there are any problems with the train path request the railway operator gest instant feedback on the app's screen and can fix the problem.
+Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the backend processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a line with no overhead line. If there are any problems with the train path request the railway operator gest instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see section \ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in section \ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in figure \ref{}.
+\begin{figure}[htb]
+	\centering
+	% If you include a JPG file, 
+	\includegraphics[width=\textwidth]{Bilder/train_path.jpg}
+	% Else if you include an EPS file 
+	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript), 
+	%\includegraphics[scale=0.30]{Fig1_Track.eps}
+	\caption{Example Train Path in Click\&Ride}
+	\label{fig:process_sequence}
+\end{figure}
+
+bla bla
 
 \subsection{Netzfahrplan}
 \label{chap:Netzfahrplan}
