@@ -1,16 +1,11 @@
-\section{Use Case: Click \& Ride App and Netzfahrplan}
+\section{Use Cases and Numerical Experiments}
 \label{chap:useCases}
-In this section, we describe the use cases which were used to proof that our approach for the automatic opitimized creation of railway timetables performes. For this we set ourselves three goals: 
-
-\begin{itemize}
-	\item[1)] An customer's request suppose to be proceed after three minutes with the Click\&Ride App
-	\item[2)] The Systemtrassen are suppose to increase the capacity of the german railway network
-	\item[3)] With the Belegung on the Systemtrassen we minimize the time customer spend within the network
-\end{itemize}
+In this section, we describe two use cases (Section~\ref{chap:CnR} and~\ref{chap:Netzfahrplan}) to which we are able to apply the methods mentioned before. For each use case we provide numerical experiments showing the threefold benefit of faster response times, increased capacity usage and reduced travel times.
 
 \subsection{Click \& Ride App}
 \label{chap:CnR}
-For a short-term train path request, e.g. a train run for the next day, we can improve the response time to the railway operator by using our approach in a fully automated process. We will introduce the new way of booking a train path with a mobile application called "Click\&Ride-App". We commit to get the railway operator a train path offering within no longer than three minutes. In comparison, today's process for manual planning takes several hours or even up to three days. To ensure a maximum duration of three minutes we need to automazie every single step in the plannning process. A simplified process sequence is shown in figure \ref{fig:process_sequence}. 
+For a short-term train path request, e.g.\ a train run for the next day, we can improve the response time to the railway operator by using our approach in a fully automated process. We will introduce the new way of booking a train path with a mobile application called \emph{Click\&Ride-App}. We commit to get the railway operator a train path offering within no longer than three minutes. In comparison, today's process for manual planning takes several hours or even up to three days. To ensure a maximum duration of three minutes we need to automate every single step in the planning process. A simplified process sequence is shown in Figure~\ref{fig:process_sequence}. 
+%
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file, 
@@ -18,11 +13,11 @@ For a short-term train path request, e.g. a train run for the next day, we can i
 	% Else if you include an EPS file 
 	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript), 
 	%\includegraphics[scale=0.30]{Fig1_Track.eps}
-	\caption{Process of Click\&Ride}
+	\caption{Simplified process of Click\&Ride. The process is fully automated except for login and requesting a train path as well as booking.}
 	\label{fig:process_sequence}
 \end{figure}
 
-Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the backend processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a line with no overhead line. If there are any problems with the train path request the railway operator gest instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see section \ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in section \ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in figure \ref{}.
+Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the back-end processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a line with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file, 
@@ -31,17 +26,40 @@ Click\&Ride is a new B2B channel so only railway operators may use the functiona
 	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript), 
 	%\includegraphics[scale=0.30]{Fig1_Track.eps}
 	\caption{Example Train Path in Click\&Ride}
-	\label{fig:process_sequence}
+	\label{fig:CnR_response}
 \end{figure}
 
-bla bla
+\subsubsection{Numerical Experiments}
+For our experiments we use $1000$ real customer requests, which were put on November, 14th, 2013 in Germany. In doing so, a customer request consists of the running points, time requirements and the characteristics of the train. The running points are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other running points. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. Consequently, we consider the infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup.
+%
+\begin{table}[h]
+	\centering
+	\caption{Response times in seconds for $1000$ requests provided in quantiles. The maximal response time is $\textbf{\textcolor{red}{??}}$ seconds.}
+	\label{tab:result_CnR}
+	\begin{tabular}{lcccc} \hline
+		\textbf{Text Style}   & \textbf{Font} & \textbf{Style} & \textbf{Size (pt)} \\ \hline
+		Main text             & Times         & regular        & 10                 \\
+		Section heading       & Times         & bold           & 12                 \\
+		Subsection heading    & Times         & bold           & 10                 \\
+		Subsubsection heading & Times         & bold           & 10                 \\ \hline
+	\end{tabular}
+\end{table}
+\par
+
+The experiments, as provided in Table~\ref{tab:result_CnR}, show that $\textbf{\textcolor{red}{??}}$ \% of the request are served within $\textbf{\textcolor{red}{??}}$ seconds and the maximal response time is $\textbf{\textcolor{red}{??}}$ seconds. This is a vast improvement compared to up to three days with a manual process.
 
 \subsection{Netzfahrplan}
 \label{chap:Netzfahrplan}
-The new process of creating the Netzfahrplan will be devided into two steps. The first step is the manuall creation of the 
-public transport which takes place during the day and the scound step is the automatic creation of the freight transport during the night. This interaction takes place every day during the period of the creation of the Netzfahrplan. As a consequence the manuall and the automatic generation can interact with each other every day. \\
-\\
+The introduced methods also allow to change the process of the \emph{Netzfahrplan}, which is the process of creating a timetable for a whole year. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $40$ days. This means a huge effort to DB Netz and can be eased b< planing the freigth trains automatically In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. After that, the timetables are adapted and improved, iteratively.
+
 \textbf{\textcolor{red}{Falls noch Platz, könnte hier das Schaubild hinzufügen}}
+
+\subsubsection{Numerical Experiments}
+For this experiment we also consider the data from NOvember, 14th, 2013 regarding infrastructure, blockages and customer requests For clarity of presentation we restrict the shown results to the Korridor 1 \cite{} rather than Germany. That means, we only consider requests and infrastructure of that specific part of Germany. Thus, we have a test consisting of $\textbf{\textcolor{red}{??}}$ requests and create slots on $\textbf{\textcolor{red}{??}}$ sections (compare Figure~\ref{}).
+
+FIGURE / TABLE RESULTS
+
+Table/Figure shows that we increase the number ... DISCUSS RESULTS
 %
 \begin{table}[h]
 	\centering
