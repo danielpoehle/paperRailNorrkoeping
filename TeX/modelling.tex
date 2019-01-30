@@ -7,7 +7,7 @@ In this section we briefly describe our modelling approach to automatically crea
 \subsection{Train path calculation}
 \label{chap:Konstruktion}
 %
-This section will give a brief overview of the process used for creating a train path. The entire process consists of three main steps. First, we search one or more different routes through the infrastructure. In the second step we create a network of discrete building blocks (called snippets) along these routes for which we calculate travel and blocking times. Finally, we put these snippets together to form a non conflicting train path.
+This section will give a brief overview of the process used for creating a train path. The entire process consists of three main steps. First, we search one or more different routes through the infrastructure. In the second step we create a network of discrete building blocks (called snippets) along these routes for which we calculate travel and blocking times. Finally, we put these snippets together to form a non conflicting train path. The same process is used to calculate train paths for individual requests as well as the precalculated slots for the Netzfahrplan. For the slots we consider frequently travelled relations, each starting and ending in one Betriebstelle. For each relation we consider up to three different train charakteristics, chosen to be representative for most of the traffic expected on the relation.
 
 
 \subsubsection{Routing}
