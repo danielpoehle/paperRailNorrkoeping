@@ -45,7 +45,7 @@ For our experiments we use $1182$ real customer requests from November, 14th, 20
 \par
 
 The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of the request are served within $138.30$ seconds and the maximal response time is $431.10$ seconds. This is a vast improvement compared to the up to three days required in the current manual process. We plan to improve response times further in order to comply with our three minute target even in the $99$ percentile.
-\textbf{\textcolor{red}{ADD INTERNAL BFQ}}
+\textbf{\textcolor{red}{ADD INTERNAL BFQ plus die Erklärung BFQ, da es hier zum ersten Mal auftritt.}}
 
 \subsection{Annual Timetable}
 \label{chap:Netzfahrplan}
@@ -77,8 +77,8 @@ As before a customer request consists of the waypoints, time requirements and th
 		Number of slots             & 935.814                      \\
 		computing time       & 02:25                     \\
 		percentage rise Langerwehe (KLAW)   & 98,30\%                       \\
-		percentage rise Bensheim (FBH) & 102,83 \%                       \\ 
-		percentage rise Oberwesel (FOBW) & 106,82 \%                     \\ \hline
+		percentage rise Bensheim (FBH) & 102,83\%                       \\ 
+		percentage rise Oberwesel (FOBW) & 106,82\%                     \\ \hline
 	\end{tabular}
 \end{table}
 \par
@@ -92,9 +92,9 @@ As before a customer request consists of the waypoints, time requirements and th
 		Number of Customer Requests             & 210                      \\
 		computing time       & 02:57                     \\
 		percentage train path assignments on slots   & 80\%                       \\
-		average BFQ & 1,27 \%                             \\ \hline
+		average BFQ & 1,27\%                             \\ \hline
 	\end{tabular}
 \end{table}
 \par
 
-The experiments, as provided in Table 2 and 3, show that...
+The experiments, as provided in Table 2 and 3, show that the creation of the timetable for Corridor One takes about 5,5 hours to assign 210 customers' request on 935.814 slots, where 80\% of the requests use the systemized slots and the average BFQ of them is 1,27\%. This is also a vast improvement compared to the up to serveral days required process in the current manual process. Moreover it shows, that the way we produce our slots is more effizient then the manual ones since we are able to produce more capacity on the infrastructure. This can be seen by the percentage rise of different points, e.g. Bensheim, where we produce 2,83\% more slots then we did manual in 2013. 
