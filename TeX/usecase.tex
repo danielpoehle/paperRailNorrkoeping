@@ -5,7 +5,7 @@ In this section, we describe two use cases (Section~\ref{chap:CnR} and~\ref{chap
 
 \subsection{Click \& Ride App}
 \label{chap:CnR}
-For a short-term train path request, e.g.\ a train run for the next day, we can improve the response time to the railway operator by using our approach in a fully automated process. We will introduce the new way of booking a train path with a mobile application called \emph{Click\&Ride-App}. We commit to get the railway operator a train path offering within no longer than three minutes. In comparison, today's process for manual planning takes several hours or even up to three days. To ensure a maximum duration of three minutes we need to automate every single step in the planning process. A simplified process sequence is shown in Figure~\ref{fig:process_sequence}.
+For a short-term train path request, e.g.\ a train run for the next day, we can improve the response time to the railway operator by using our approach in a fully automated process. We will introduce the new way of booking a train path with a mobile application called \emph{Click\&Ride-App}. We commit to provide the railway operator with a train path offering in at most three minutes. In comparison, today's process for manual planning takes several hours in most cases and may require up to three days. To ensure a maximum duration of three minutes we need to automate every single step in the planning process. A simplified process sequence is shown in Figure~\ref{fig:process_sequence}.
 %
 \begin{figure}[htb]
 	\centering
@@ -18,7 +18,7 @@ For a short-term train path request, e.g.\ a train run for the next day, we can 
 	\label{fig:process_sequence}
 \end{figure}
 
-Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the back-end processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a line with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
+Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the back-end processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a track with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file,
@@ -31,7 +31,7 @@ Click\&Ride is a new B2B channel so only railway operators may use the functiona
 \end{figure}
 
 \subsubsection{Numerical Experiments}
-For our experiments we use $1182$ real customer requests, which were put on November, 14th, 2013 in Germany. In doing so, a customer request consists of the running points, time requirements and the characteristics of the train. The running points are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other running points. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. Consequently, we consider the infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup.
+For our experiments we use $1182$ real customer requests from November, 14th, 2013 in Germany. A customer request consists of the waypoints, time requirements and the characteristics of the train. The waypoints are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other waypoints. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. We consider the actual German infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup.
 %
 \begin{table}[h]
 	\centering
@@ -44,7 +44,7 @@ For our experiments we use $1182$ real customer requests, which were put on Nove
 \end{table}
 \par
 
-The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of the request are served within $138.30$ seconds and the maximal response time is $431.10$ seconds. This is a vast improvement compared to the up to three days required in the current manual process.
+The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of the request are served within $138.30$ seconds and the maximal response time is $431.10$ seconds. This is a vast improvement compared to the up to three days required in the current manual process. We plan to improve response times further in order to comply with our three minute target even in the $99$ percentile.
 
 \subsection{Netzfahrplan}
 \label{chap:Netzfahrplan}
@@ -54,12 +54,9 @@ The introduced methods also allow to change the process of the \emph{Netzfahrpla
 \textbf{\textcolor{red}{Falls noch Platz, könnte hier das Schaubild hinzufügen}}
 
 \subsubsection{Numerical Experiments}
-For this experiment we also consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One \cite{} rather than the entire German network. Corridor One is the Rhine-Alpine Corridor stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. During the course it passes five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany Emmerich/Aachen to Basel will be considered. (see picture XXX). Thus, we have a test set consisting of $\textbf{\textcolor{red}{??}}$ requests and create slots on $\textbf{\textcolor{red}{??}}$ sections (compare Figure~\ref{}).
-A customer request consist of the running points, time requirements and the
-characteristics of the train. The running points are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other running points. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train.
-
-
-To discuss the solution of our process we created the slots for the european rail freight corridor one.  \\
+For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (the Rhine-Alpine Corridor) \cite{} rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. It covers five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich/Aachen to Basel will be considered. (see picture XXX). We have a test set consisting of $\textbf{\textcolor{red}{??}}$ requests and create slots on $\textbf{\textcolor{red}{??}}$ sections (compare Figure~\ref{}).
+As before a customer request consists of the waypoints, time requirements and the
+characteristics of the train.
 
 
 FIGURE / TABLE RESULTS
@@ -79,5 +76,4 @@ Table/Figure shows that we increase the number ... DISCUSS RESULTS
 	\end{tabular}
 \end{table}
 \par
-
 

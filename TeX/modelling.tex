@@ -1,13 +1,13 @@
 \section{Train path construction and slot assignment}
 \label{chap:methods}
 %
-In this section we briefly describe our modelling approach to automatically create timetables. It is divided into two main parts: First, we calculate train paths, which are located on the most frequently used part of the infrastructure (Section~\ref{chap:Konstruktion}). Therefore, we extend the idea of \cite{O:2009}. The second part is the train path assignment (Section~\ref{chap:Belegung}), based on the idea of \cite{N:1998, N:2015} and \cite{NO:2014}, where some single train paths are assigned to a complete timetable.
+In this section we briefly describe our modelling approach to automatically create timetables. It is divided into two main parts: First, we precalculate slots, which are located on the most frequently used part of the infrastructure (Section~\ref{chap:Konstruktion}). Therefore, we extend the idea of \cite{O:2009}. The second part is the train path assignment (Section~\ref{chap:Belegung}), based on the idea of \cite{N:1998, N:2015} and \cite{NO:2014}, where some single train paths are assigned to a complete timetable.
 
 
 \subsection{Train path calculation}
 \label{chap:Konstruktion}
 %
-This section will give a brief overview of the process used for creating a train path. The entire process consists of three main steps. First, we search one or more different routes through the infrastructure. In the second step we create a network of discrete building blocks (called snippets) along these routes for which we calculate travel and blocking times. Finally, we put these snippets together to form a non conflicting train path. The same process is used to calculate train paths for individual requests as well as the precalculated slots for the Netzfahrplan. For the slots we consider frequently travelled relations, each starting and ending in one Betriebstelle. For each relation we consider up to three different train charakteristics, chosen to be representative for most of the traffic expected on the relation.
+This section will give a brief overview of the process used for creating a train path. The entire process consists of three main steps. First, we search one or more different routes through the infrastructure. In the second step we create a network of discrete building blocks (called snippets) along these routes for which we calculate travel and blocking times. Finally, we put these snippets together to form a non conflicting train path. The same process is used to calculate train paths for individual requests as well as the precalculated slots for the Netzfahrplan. For the slots we consider frequently travelled relations, each starting and ending in one Betriebstelle. For each relation we consider up to three different train characteristics, chosen to be representative for most of the traffic expected on the relation.
 
 
 \subsubsection{Routing}
@@ -48,11 +48,11 @@ The possible arrival times of the sink snippets will now be such that there must
 \subsection{train path assignment}
 \label{chap:Belegung}
 %
-As a result of the train path and slot calculation described in the previous section (Section~\ref{chap:Konstruktion}), we are provided with a set of slots starting and ending at a specific Fahrweg at a specific time. So, the slots form a graph, we call \G\, for later reference, where the slots are the edges and the tupel of Fahrweg and point in time are the vertices. In a process consisting of four steps, this graph is used to assign train paths to the requests made by customers. First, we map the requests of the customer to the graph \G, resulting in so-called \emph{break-in} and \emph{break-out points}. Then, we search for the shortest path within \G\, using slots. In the third part, we calculate train paths from the start of a request to the break-in point and from the break-out point to the goal of the request. Finally, we optimize the result for all requests using a column generation approach.
+As a result of the train path and slot calculation described in the previous section (Section~\ref{chap:Konstruktion}), we are provided with a set of slots starting and ending at a specific Fahrweg at a specific time. So, the slots form a graph, we call \G\, for later reference, where the slots are the edges and the tupel of Fahrweg and point in time are the vertices. In a process consisting of four steps, this graph is used to assign train paths to the requests made by customers. First, we map the requests of the customer to the graph \G, resulting in so-called \emph{break-in} and \emph{break-out points}. Then, we search for the shortest path within \G\, using slots. In the third part, we calculate train paths from the start of a request to the break-in point and from the break-out point to the target of the request. Finally, we optimize the result for all requests using a column generation approach.
 
 \subsubsection{Calculation of break-in and break-out points}
 %
-As most customers do not put a request starting or ending at vertices of the graph \G\, (compare Figure~\ref{fig:E-A-Pkte}), we need to map the start and end of a request to vertices of \G, which we call break-in points and break-out points, respectively. Therefore, we calculate a number of different routes (10 in the experiment), using the A* algorithm previously described. Then, beginning at the start of the route, we consecutively check for each Fahrweg of each route whether it is associated to a vertex of the graph \G. If so, we found a break-in point and stop; otherwise no sequence of predefined slots can be used and the request has to be calculated individually. In order to find the break-out points, we repeat the above process starting from the end of each route.
+As most customer requests do not start or end at vertices of the graph \G\, (compare Figure~\ref{fig:E-A-Pkte}), we need to map the start and end of a request to vertices of \G, which we call break-in points and break-out points, respectively. Therefore, we calculate a number of different routes (10 in the experiment), using the A* algorithm previously described. Then, beginning at the start of the route, we consecutively check for each Fahrweg of each route whether it is associated to a vertex of the graph \G. If so, we found a break-in point and stop; otherwise no sequence of predefined slots can be used and the request has to be calculated individually. In order to find the break-out points, we repeat the above process starting from the end of each route.
 %
 \begin{figure}[tb]
 	\centering
@@ -65,8 +65,8 @@ As most customers do not put a request starting or ending at vertices of the gra
 	\label{fig:E-A-Pkte}
 \end{figure}
 
-\subsubsection{Routing on Systemtrassen}
-The mapping of a request previously described may not be unique, resulting in a time-dependent multi-source-multi-sink shortest path problem to be solved for each request. Furthermore, due to the technical properties of the requests such as e.g.\ length, acceleration or width, the use of Systemtrassen is restricted depending on the request.
+\subsubsection{Routing on Slots}
+The mapping of a request previously described may not be unique, resulting in a time-dependent multi-source-multi-sink shortest path problem to be solved for each request. Furthermore, due to the technical properties of the requests such as e.g.\ length, acceleration or width, the use of slots is restricted depending on the request.
 We use standard techniques like time expansion to tackle the time dependency, dummy edges for multi-source and multi-sink problem as well as dynamic filters for the technical properties, reducing the problem to a standard shortest path problem, which we solve using a Dijkstra algorithm.
 
 \subsubsection{Vor-/Nachlauf}
