@@ -50,7 +50,7 @@ The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of 
 \subsection{Annual Timetable}
 \label{chap:Netzfahrplan}
 
-The introduced methods also allow to change the process of the creation of an annual timetable. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $50$ days. This means a huge effort to DB Netz and can be eased by planing the freigth trains automatically. In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. After that, the timetables are adapted and improved, iteratively.
+The introduced methods will allow us to change the process of the creation of an annual timetable. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $50$ days. This currently means a huge effort to DB Netz and can be eased by planning the freigth trains automatically. In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. Afterwards the timetables are adapted and improved iteratively.
 
 \begin{figure}[htb]
 	\centering
@@ -64,7 +64,7 @@ The introduced methods also allow to change the process of the creation of an an
 \end{figure}
 
 \subsubsection{Numerical Experiments}
-For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (the Rhine-Alpine Corridor) \cite{} rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. It covers five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich and Aachen to Basel will be considered. (see picture XXX). We have a test set consisting of 210 requests and create 935.814 slots on 38 sections (compare Figure~\ref{}).
+For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (the Rhine-Alpine Corridor) \cite{} rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. It covers five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich and Aachen to Basel will be considered. (see picture \textbf{\textcolor{red}{XXX}}). We have a test set consisting of 210 requests and create 935,814 slots on 38 sections (compare Figure~\ref{}).
 As before a customer request consists of the waypoints, time requirements and the characteristics of the train.
 
 
@@ -74,11 +74,11 @@ As before a customer request consists of the waypoints, time requirements and th
 	\label{tab:result_Netzfpl}
 	\begin{tabular}{lcccc} \hline
 		\textbf{KPIs Konstruktion}   & \textbf{Result}  \\ \hline
-		Number of slots             & 935.814                      \\
-		computing time       & 02:25                     \\
-		percentage rise Langerwehe (KLAW)   & 98,30\%                       \\
-		percentage rise Bensheim (FBH) & 102,83\%                       \\ 
-		percentage rise Oberwesel (FOBW) & 106,82\%                     \\ \hline
+		Number of slots             & $935\,814$                      \\
+		computing time       & 02:25h                     \\
+		percentage rise Langerwehe (KLAW)   & $98.30\%$                       \\
+		percentage rise Bensheim (FBH) & $102.83\%$                       \\
+		percentage rise Oberwesel (FOBW) & $106.82\%$                     \\ \hline
 	\end{tabular}
 \end{table}
 \par
@@ -89,12 +89,12 @@ As before a customer request consists of the waypoints, time requirements and th
 	\label{tab:result_Netzfpl_Bel}
 	\begin{tabular}{lcccc} \hline
 		\textbf{KPIs Belegung}   & \textbf{Result}  \\ \hline
-		Number of Customer Requests             & 210                      \\
-		computing time       & 02:57                     \\
-		percentage train path assignments on slots   & 80\%                       \\
-		average BFQ & 1,27\%                             \\ \hline
+		Number of Customer Requests             & $210$                      \\
+		computing time       & 02:57h                     \\
+		percentage train path assignments on slots   & $80\%$                       \\
+		average BFQ & $1.27\%$                             \\ \hline
 	\end{tabular}
 \end{table}
 \par
 
-The experiments, as provided in Table 2 and 3, show that the creation of the timetable for Corridor One takes about 5,5 hours to assign 210 customers' request on 935.814 slots, where 80\% of the requests use the systemized slots and the average BFQ of them is 1,27\%. This is also a vast improvement compared to the up to serveral days required process in the current manual process. Moreover it shows, that the way we produce our slots is more effizient then the manual ones since we are able to produce more capacity on the infrastructure. This can be seen by the percentage rise of different points, e.g. Bensheim, where we produce 2,83\% more slots then we did manual in 2013. 
+The experiments, as provided in Table 2 and 3, show that the creation of the timetable for Corridor One takes about $5.5$ hours to assign $210$ customers' request on $935\,814$ slots, where $80\%$ of the requests use the systemized slots and the average BFQ of them is $1.27\%$. This is also a vast improvement compared to serveral days currently required in the manual process. Moreover it shows that the way we produce our slots is more efficient than the manual ones, since we are able to utilize more capacity on the infrastructure. This can be seen by the percentage rise of different points, e.g. Bensheim, where we produce $2.83\%$ more slots then we did manual in 2013 \textbf{\textcolor{red}{More explanation needed}}.
