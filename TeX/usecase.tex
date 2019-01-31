@@ -3,7 +3,7 @@
 
 In this section, we describe two use cases (Section~\ref{chap:CnR} and~\ref{chap:Netzfahrplan}) to which we are able to apply the methods mentioned before. For each use case we provide numerical experiments showing the threefold benefit of faster response times, increased capacity usage and reduced travel times.
 
-\subsection{Click \& Ride App}
+\subsection{Click\&Ride App}
 \label{chap:CnR}
 For a short-term train path request, e.g.\ a train run for the next day, we can improve the response time to the railway operator by using our approach in a fully automated process. We will introduce the new way of booking a train path with a mobile application called \emph{Click\&Ride-App}. We commit to provide the railway operator with a train path offering in at most three minutes. In comparison, today's process for manual planning takes several hours in most cases and may require up to three days. To ensure a maximum duration of three minutes we need to automate every single step in the planning process. A simplified process sequence is shown in Figure~\ref{fig:process_sequence}.
 %
@@ -50,9 +50,18 @@ The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of 
 \subsection{Annual Timetable}
 \label{chap:Netzfahrplan}
 
-The introduced methods also allow to change the process of the creation of an annual timetable. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $40$ days. This means a huge effort to DB Netz and can be eased by planing the freigth trains automatically. In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. After that, the timetables are adapted and improved, iteratively.
+The introduced methods also allow to change the process of the creation of an annual timetable. In this use case all customer requests, for passenger and freight trains, are put at the same time and have to be provided with a timetable fulfilling all requests within $50$ days. This means a huge effort to DB Netz and can be eased by planing the freigth trains automatically. In an iterative process we manually create timetables for the passenger trains first. In the second step, the freight trains are calculated automatically with the methods described in Sections~\ref{chap:Konstruktion} and~\ref{chap:Belegung}. After that, the timetables are adapted and improved, iteratively.
 
-\textbf{\textcolor{red}{Falls noch Platz, könnte hier das Schaubild hinzufügen}}
+\begin{figure}[htb]
+	\centering
+	% If you include a JPG file,
+	\includegraphics[width=\textwidth]{Bilder/annual_planning.jpg}
+	% Else if you include an EPS file
+	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
+	%\includegraphics[scale=0.30]{Fig1_Track.eps}
+	\caption{Iterative Process for Annual Timetable: Planning by hand during the day and automated optimization during the night}
+	\label{fig:annual_planning}
+\end{figure}
 
 \subsubsection{Numerical Experiments}
 For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (the Rhine-Alpine Corridor) \cite{} rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. It covers five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich and Aachen to Basel will be considered. (see picture XXX). We have a test set consisting of 210 requests and create 935.814 slots on 38 sections (compare Figure~\ref{}).
