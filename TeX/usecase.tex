@@ -54,26 +54,37 @@ The introduced methods also allow to change the process of the \emph{Netzfahrpla
 \textbf{\textcolor{red}{Falls noch Platz, könnte hier das Schaubild hinzufügen}}
 
 \subsubsection{Numerical Experiments}
-For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (the Rhine-Alpine Corridor) \cite{} rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. It covers five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich/Aachen to Basel will be considered. (see picture XXX). We have a test set consisting of $\textbf{\textcolor{red}{??}}$ requests and create slots on $\textbf{\textcolor{red}{??}}$ sections (compare Figure~\ref{}).
-As before a customer request consists of the waypoints, time requirements and the
-characteristics of the train.
+For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (the Rhine-Alpine Corridor) \cite{} rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa. It covers five different countries: Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich and Aachen to Basel will be considered. (see picture XXX). We have a test set consisting of 210 requests and create slots on 935.814 sections (compare Figure~\ref{}).
+As before a customer request consists of the waypoints, time requirements and the characteristics of the train.
 
 
-FIGURE / TABLE RESULTS
-
-Table/Figure shows that we increase the number ... DISCUSS RESULTS
-%
 \begin{table}[h]
 	\centering
-	\caption{Results for Netzfahrplan}
+	\caption{Results for the cration of slots}
 	\label{tab:result_Netzfpl}
 	\begin{tabular}{lcccc} \hline
-		\textbf{Text Style}   & \textbf{Font} & \textbf{Style} & \textbf{Size (pt)} \\ \hline
-		Main text             & Times         & regular        & 10                 \\
-		Section heading       & Times         & bold           & 12                 \\
-		Subsection heading    & Times         & bold           & 10                 \\
-		Subsubsection heading & Times         & bold           & 10                 \\ \hline
+		\textbf{KPIs Konstruktion}   & \textbf{Result}  \\ \hline
+		Number of slots             & 935.814                      \\
+		computing time       & 02:25                     \\
+		percentage rise Langerwehe (KLAW)   & 98,30\%                       \\
+		percentage rise Bensheim (FBH) & 102,83 \%                       \\ 
+		percentage rise Oberwesel (FOBW) & 106,82 \%                     \\ \hline
 	\end{tabular}
 \end{table}
 \par
 
+\begin{table}[h]
+	\centering
+	\caption{Results for the train path assignment}
+	\label{tab:result_Netzfpl_Bel}
+	\begin{tabular}{lcccc} \hline
+		\textbf{KPIs Belegung}   & \textbf{Result}  \\ \hline
+		Number of Customer Requests             & 210                      \\
+		computing time       & 02:57                     \\
+		percentage train path assignments on slots   & 80\%                       \\
+		average BFQ & 1,27 \%                             \\ \hline
+	\end{tabular}
+\end{table}
+\par
+
+The experiments, as provided in Table 2 and 3, show that...
