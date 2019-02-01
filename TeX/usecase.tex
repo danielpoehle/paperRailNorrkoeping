@@ -18,11 +18,23 @@ For a short-term train path request, e.g.\ a train run for the next day, we can 
 	\label{fig:process_sequence}
 \end{figure}
 
-Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the back-end processes. At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a track with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
+Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the back-end processes.See figure \ref{fig:CnR_request} for the user interface of Click\&Ride.
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file,
-	\includegraphics[width=\textwidth]{Bilder/train_path.jpg}
+	\includegraphics[width=\textwidth]{Bilder/request.jpg}
+	% Else if you include an EPS file
+	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
+	%\includegraphics[scale=0.30]{Fig1_Track.eps}
+	\caption{Click\&Ride GUI}
+	\label{fig:CnR_request}
+\end{figure}
+
+At first there is a validation service that ensures formal and technical fit to the lines that will be used. For example an electric vehicle cannot use a track with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path planning as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the line cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
+\begin{figure}[htb]
+	\centering
+	% If you include a JPG file,
+	\includegraphics[width=\textwidth]{Bilder/response.jpg}
 	% Else if you include an EPS file
 	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
 	%\includegraphics[scale=0.30]{Fig1_Track.eps}
