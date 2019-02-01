@@ -18,7 +18,6 @@ For a short-term train path request, e.g.\ a train run for the next day, we can 
 	\label{fig:process_sequence}
 \end{figure}
 
-Click\&Ride is a new B2B channel so only railway operators may use the functionalities. After logging in, the the train path request will be submitted to the back-end processes. Figure~\ref{fig:CnR_request} gives an impression of the user interface of Click\&Ride.
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file,
@@ -30,6 +29,7 @@ Click\&Ride is a new B2B channel so only railway operators may use the functiona
 	\label{fig:CnR_request}
 \end{figure}
 
+Click\&Ride is a new B2B channel. After logging in, the the train path request will be submitted to the back-end processes. Figure~\ref{fig:CnR_request} gives an impression of the user interface of Click\&Ride.
 At first there is a validation service that ensures formal and technical fit to the tracks that will be used. For example an electric vehicle cannot use a track with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path calculation as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the track cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
 \begin{figure}[htb]
 	\centering
@@ -68,7 +68,7 @@ The introduced methods will allow us to change the process of the creation of an
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file,
-	\includegraphics[width=0.8\textwidth]{Bilder/annual_planning.jpg}
+	\includegraphics[width=0.7\textwidth]{Bilder/annual_planning.jpg}
 	% Else if you include an EPS file
 	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
 	%\includegraphics[scale=0.30]{Fig1_Track.eps}
@@ -111,4 +111,4 @@ Table~\ref{tab:result_Netzfpl} shows the efficiency of our approach compared to 
 \end{table}
 \par
 
-From Table~\ref{tab:result_Netzfpl_Bel} we see that precalculation of slots is beneficial for our approach as $80\%$ of all assigned train paths use slots. $20\%$ of the requests are assigned to individually created train paths. The average BFQ is $1.27$ which is more than $5\%$ better compared to the results of the manual process in 2013. As the train path assignment takes about $3$ hours, a whole timetable for Corridor One is created in $5.5$ hours fulfilling $210$ customers' requests on 935.814 slots.
+From Table~\ref{tab:result_Netzfpl_Bel} we see that precalculation of slots is beneficial for our approach as $80\%$ of all assigned train paths use slots. $20\%$ of the requests are assigned to individually created train paths. The average BFQ is $1.27$ which is more than $5\%$ better compared to the results of the manual process in 2013. As the train path assignment takes about $3$ hours, a whole timetable for Corridor One is created in $5.5$ hours fulfilling $210$ customer requests on 935.814 slots.
