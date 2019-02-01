@@ -43,21 +43,22 @@ At first there is a validation service that ensures formal and technical fit to 
 \end{figure}
 
 \subsubsection{Numerical Experiments}
-For our experiments we use $1182$ real customer requests from November, 14th, 2013 in Germany. A customer request consists of the waypoints, time requirements and the characteristics of the train. The waypoints are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other waypoints. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. We consider the actual German infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup.
+For our experiments we use $1301$ real customer requests from November, 14th, 2013 in Germany. A customer request consists of the waypoints, time requirements and the characteristics of the train. The waypoints are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other waypoints. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. We consider the actual German infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup. We measure the quality of a train path in a metric called BFQ (\textit{Beförderungszeitquotient}) which is the travel time actually required by the train divided by the travel time that would have been necessary without additional stops. Note that for the Click \& Ride BFQ we use the shortest travel time on the shortest route in the denominator while the BFQ for the manual planners was calculated using the shortest travel time on the route chosen by the planner. This slight discrepancy in the numbers is to the advantage of the manual planners, as the route in the denominator could be longer.
 %
 \begin{table}[h]
 	\centering
-	\caption{Response times in seconds for $1182$ requests provided in percentiles.}
+	\caption{Percentiles for response times, automatic BFQ and manual BFQ for $1301$ customer requests.}
 	\label{tab:result_CnR}
-	\begin{tabular}{ccccc} \hline
-		$\textbf{50\%}$ & $\textbf{90\%}$ & $\textbf{95\%}$ & $\textbf{99\%}$ \\ \hline
-		$8.47$ sec.     & $66.74$ sec.    & $138.30$ sec.   & $216.55$ sec.   \\
+	\begin{tabular}{lcccccc} \hline
+	 	\textbf{Metric}    & $\textbf{50\%}$ & $\textbf{90\%}$ & $\textbf{95\%}$ & $\textbf{99\%}$ & \textbf{Max}  \\ \hline
+		C\&R response time & $3.68$ sec.     & $50.28$ sec.    & $82.98$ sec.    & $147.89$ sec.   & $222.34$ sec. \\
+		C\&R BFQ           & $1.03$          & $1.46$          & $1.73$          & $2.53$          & $6.07$ \\
+		Manual BFQ         & $1.22$          & $1.94$          & $2.52$          & $4.35$          & $10.54$ \\ \hline
 	\end{tabular}
 \end{table}
 \par
 
-The experiments, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of the request are served within $138.30$ seconds and the maximal response time is $431.10$ seconds. This is a vast improvement compared to the up to three days required in the current manual process. We plan to improve response times further in order to comply with our three minute target even in the $99$ percentile.
-\textbf{\textcolor{red}{ADD INTERNAL BFQ plus die Erklärung BFQ, da es hier zum ersten Mal auftritt.}}
+The experimental results, as provided in Table~\ref{tab:result_CnR}, show that $95\%$ of the request are served within $82.98$ seconds. $95\%$ of requests have a BFQ of at most $1.73$ while the same percentile had a BFQ of $2.52$ when planned manually. The maximal response time is $222.34$ seconds. Our target of serving a response in less than three minutes can be fulfilled in all but a few edge cases ($4$ out of the $1301$). This is a vast improvement compared to the up to three days required in the current manual process. The BFQ shows that the automatic process on average leads to faster train paths compared to the manual process.
 
 \subsection{Annual Timetable}
 \label{chap:Netzfahrplan}
