@@ -1,7 +1,7 @@
 \section{Train Path Planning and Train Path Assignment}
 \label{chap:methods}
 %
-In this section we briefly describe our modelling approach to automatically create timetables. It is divided into two main parts: First, we precalculate slots, which are located on the most frequently used part of the infrastructure (Section~\ref{chap:Konstruktion}). Therefore, we extend the idea of \cite{O:2009}. The second part is the train path assignment (Section~\ref{chap:Belegung}), based on the idea of \cite{N:1998, N:2015} and \cite{NO:2014}, where some single train paths are assigned to a complete timetable.
+In this section we briefly describe our modelling approach to automatically create timetables. It is divided into two main parts: First, we precalculate slots, which are located on the most frequently used parts of the infrastructure (Section~\ref{chap:Konstruktion}). Therefore, we extend the idea of \cite{O:2009}. The second part is the train path assignment (Section~\ref{chap:Belegung}), based on the idea of \cite{N:1998, N:2015} and \cite{NO:2014}, where some single train paths are assigned to a complete timetable.
 
 
 \subsection{Train Path Calculation}
@@ -13,9 +13,9 @@ This section will give a brief overview of the process used for creating a train
 \subsubsection{Routing}
 To reduce the problem size, our first step consists of finding routes that could be relevant for the train. We use an A* algorithm for finding a shortest route on our infrastructure, which is a digital representation of the German railway network. The algorithm utilizes geo coordinates for calculating the beeline distance between Betriebstellen as the lower bound.
 For each Betriebstelle we keep a list of all possible ways to traverse it. Each possibility is termed a \emph{Fahrweg}. The Fahrwege form a graph where each Fahrweg is a vertex, with directed edges indicating which Fahrweg is a direct successor of another. The edge costs are based on the Fahrwege lengths.
-But as certain Fahrwege are preferred to others we multiply the cost with factor which is closer to one for more desirable Fahrwege. This way the use of intersections and the use of tracks from the opposite direction can be discouraged. It is this graph we use for finding routes for our train paths.
+As certain Fahrwege are preferred to others, we multiply the costs with factor greater or equal to one, with larger factors for less desirable Fahrwege. This way the use of intersections and the use of tracks designated for the opposite direction can be discouraged. It is this graph we use for finding routes for our train paths.
 
-While exploring the graph the algorithm filters out all paths, which are incompatible with the characteristics of the train. For example the train might exceed maximum mass or width of the Fahrweg or might require an electrified track.
+While exploring the graph the algorithm filters out all paths which are incompatible with the characteristics of the train. For example the train might exceed maximum mass or width of the Fahrweg or might require an electrified track.
 As it is not always the best option to use the shortest path, we create multiple alternative routes. For searching the subsequent routes, we increase the costs of edges that where used in already found routes. A route is only accepted as a real alternative if it differs from all already calculated ones in at least one Betriebstelle. We set an upper limit to the length of alternative routes which is a multiple ($1.3$ in the experiments) of the shortest route found.
 
 
@@ -30,7 +30,7 @@ This way we get a directed, acyclic graph of snippets representing the possible 
 %
 The last step to calculate the train path is to determine a starting time and a path through the snippet graph such that no blocking time is in conflict with another train path and the number of stops is minimized. For each snippet we can calculate the possible departure times of the snippet that are not conflicting with other trains by projecting the blocking times of other trains back to the snippets start. This way we get a list of intervals for each snippet where each interval represents the allowed start times. Next we reduce the intervals further to ensure that only such intervals remain that can be reached by one of the snippets predecessors. For each snippet we calculate the possible arrival times given the known departure intervals. Note that for a snippet not ending in a stop, the resulting intervals will have the same length but are shifted by the travel time of the snippet. For stopping snippets the intervals can increase in size as long as the stop is not used by a different train. For each snippet we take the union of all its predecessors arrival intervals and intersect them with the possible departures of the snippet. This yields the new departure times of the snippet. As the snippet graph is directed and acyclic, we can find a topological ordering of the snippets such that this reduction of departure times needs to be done only once per snippet.
 
-The possible arrival times of the sink snippets will now be such that there must exist a non conflicting valid train path arriving at the given time. We calculate train paths by choosing the earliest arrival time. For a given arrival time we can select the predecessor snippets that have a compatible departure time. From them we select those that lead to the least number of stops (we prefer non stopping predecessors) first and then to the latest departure. The resulting train path is guaranteed to be conflict free, while keeping the number of stops and travel time low. The algorithm runs sufficiently fast, requiring $\mathcal{O}(m+n)$ calculations where $m$ is the number of snippets and $n$ is the number of edges in the snippet graph. Note that the maximum number of intervals per snippet is bounded by constant, the number of seconds per day.
+The possible arrival times of the sink snippets will now be such that there must exist a non conflicting valid train path arriving at the given time. We calculate train paths by choosing the earliest arrival time. For a given arrival time we can select the predecessor snippets that have a compatible departure time. From them we select those that lead to the least number of stops (we prefer non stopping predecessors) first and then to the latest departure. The resulting train path is guaranteed to be conflict free, while keeping the number of stops and travel time low. The algorithm runs sufficiently fast, requiring $\mathcal{O}(m+n)$ calculations where $m$ is the number of snippets and $n$ is the number of edges in the snippet graph. Note that the maximum number of intervals per snippet is bounded by a constant, the number of seconds per day.
 
 %
 \begin{figure}[tb]
@@ -40,7 +40,7 @@ The possible arrival times of the sink snippets will now be such that there must
 	% Else if you include an EPS file
 	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
 	%\includegraphics[scale=0.30]{Fig1_Track.eps}
-	\caption{Right: A macroscopic map of the infrastructure administrated by DB Netze, on which slots are created. The time dependency is neglected for a better overview. Left: Zoom into the German part of the Rhine-Apline Corridor.}
+	\caption{Right: a macroscopic map of the infrastructure administrated by DB Netze, on which slots are created. The time dependency is neglected for a better overview. Left: Zoom into the German part of the Rhine-Apline Corridor.}
 	\label{fig:STAKarte}
 \end{figure}
 
@@ -57,11 +57,12 @@ As most customer requests do not start or end at vertices of the graph \G\, (com
 \begin{figure}[tb]
 	\centering
 	% If you include a JPG file,
-	\includegraphics[scale=0.30]{Bilder/Kor1_EA_Farbe.jpg}
-	% Else if you include an EPS file
-	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
-	%\includegraphics[scale=0.30]{Fig1_Track.eps}
-	\caption{A small section of Figure~\ref{fig:STAKarte}. The customer request starts at \emph{start} and ends in \emph{target}. The break-in and break-out points are marked as blue box ($\Box$) and green diamond ($\Diamond$), respectively. The time dependency is neglected for a better overview.}
+	\includegraphics[width=0.48\textwidth]{Bilder/trainPath.png}
+	~
+	\includegraphics[width=0.48\textwidth]{Bilder/Kor1_EA_Farbe.jpg}
+
+	\caption{Left: parts of multiple train paths shown as blocking times.
+	Right: a small section of Figure~\ref{fig:STAKarte}. The customer request starts at \emph{start} and ends in \emph{target}. The break-in and break-out points are marked as blue box ($\Box$) and green diamond ($\Diamond$), respectively. The time dependency is neglected for a better overview.}
 	\label{fig:E-A-Pkte}
 \end{figure}
 
