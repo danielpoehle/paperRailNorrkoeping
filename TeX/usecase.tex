@@ -14,7 +14,7 @@ For a short-term train path request, e.g.\ a train run for the next day, we can 
 	% Else if you include an EPS file
 	%    (it may need an interpreter for the PostScript language, e.g. Ghostscript),
 	%\includegraphics[scale=0.30]{Fig1_Track.eps}
-	\caption{Simplified process of Click\&Ride. The process is fully automated except for login and requesting a train path as well as booking.}
+	\caption{Simplified process of Click\&Ride. The process is fully automated in the backend.}
 	\label{fig:process_sequence}
 \end{figure}
 
@@ -29,8 +29,8 @@ For a short-term train path request, e.g.\ a train run for the next day, we can 
 	\label{fig:CnR_request}
 \end{figure}
 
-Click\&Ride is a new B2B channel. After logging in, the the train path request will be submitted to the back-end processes. Figure~\ref{fig:CnR_request} gives an impression of the user interface of Click\&Ride.
-At first there is a validation service that ensures formal and technical fit to the tracks that will be used. For example an electric vehicle cannot use a track with no overhead line. If there are any problems with the train path request the railway operator gets instant feedback on the app's screen and can fix the problem. When there are no problems left the train path request is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path is generated automatically by train path calculation as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the track cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
+Click\&Ride is a new B2B channel. After logging in, the train path request will be submitted to the back-end processes. Figure~\ref{fig:CnR_request} gives an impression of the user interface of Click\&Ride.
+At first there is a validation service that ensures formal and technical fit to the tracks that will be used. For example an electric vehicle cannot use a track with no overhead line. If there are any problems with the train path request, the railway operator will get instant feedback on the app's screen and the possibility to change the request. If the request is validated, it is handled by the optimization in train path assignment (see Section~\ref{chap:Belegung}). If the technical properties of the requested train do not match the existing slots on the lines, a train path will be generated automatically by train path calculation as described in Section~\ref{chap:Konstruktion}. Railway operators have a limited time to check the offered train path before booking. To make sure the capacity on the track cannot be given to other railway operators in the meanwhile, the train path is reserved for a maximum of ten minutes. To complete the response the total price for the train path is calculated and displayed in the Click\&Ride-App. An example response is shown in Figure~\ref{fig:CnR_response}.
 \begin{figure}[htb]
 	\centering
 	% If you include a JPG file,
@@ -43,7 +43,7 @@ At first there is a validation service that ensures formal and technical fit to 
 \end{figure}
 
 \subsubsection{Numerical Experiments}
-For our experiments we use $1301$ real customer requests from November, 14th, 2013 in Germany. A customer request consists of the waypoints, time requirements and the characteristics of the train. The waypoints are at least the start of the request and its goal, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other waypoints. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. We consider the actual German infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup. We measure the quality of a train path in a metric called BFQ (\textit{Beförderungszeitquotient}) which is the travel time actually required by the train divided by the travel time that would have been necessary without additional stops. Note that for the Click \& Ride BFQ we use the shortest travel time on the shortest route in the denominator while the BFQ for the manual planners was calculated using the shortest travel time on the route chosen by the planner. This slight discrepancy in the numbers is to the advantage of the manual planners, as the route in the denominator could be longer.
+For our experiments we use $1301$ real customer requests from November, 14th, 2013 in Germany. A customer request consists of the waypoints, time requirements and the characteristics of the train. The waypoints are at least the start of the request and its target, but may also include some stops which should be served in between. The time requirements for our data consists only of an interval at the start of the request. But it is also possible to provide further time restrictions on the other waypoints. The characteristics of the request include all data necessary to calculate its dynamic properties such as acceleration and its static parameters like length, width and mass of the requested train. We consider the actual German infrastructure available in 2013. Furthermore, we also regard the blockages of passenger trains, which were scheduled on November, 14th, 2013 in order to have a realistic setup. We measure the quality of a train path in a metric called BFQ (\textit{Beförderungszeitquotient}) which is the travel time actually required by the train divided by the travel time that would have been necessary without additional stops. Note that for the Click \& Ride BFQ we use the shortest travel time on the shortest route in the denominator while the BFQ for the manual planners was calculated using the shortest travel time on the route chosen by the planner. This slight discrepancy in the numbers is to the advantage of the manual planners, as the route in the denominator could be longer.
 %
 \begin{table}[h]
 	\centering
@@ -79,24 +79,26 @@ The introduced methods will allow us to change the process of the creation of an
 \subsubsection{Numerical Experiments}
 For this experiment we again consider the data from November, 14th, 2013 regarding infrastructure, blockages and customer requests. For clarity of presentation we restrict the shown results to the German part of Corridor One (\cite{Kor1}) rather than the entire German network. Corridor One stretches from sea ports of Rotterdam, Zeebrugge, Antwerp, Amsterdam and Vlissingen to the port of Genoa covering Netherlands, Belgium, Germany, Switzerland and Italy. Here only the part in Germany from Emmerich and Aachen to Basel will be considered. We have a test set consisting of 210 requests and create slots on 38 sections (compare Figure~\ref{fig:STAKarte}, left).
 %As before a customer request consists of the waypoints, time requirements and the characteristics of the train.
+%%
+%\begin{table}[h]
+%	\centering
+%	\caption{Key performance indicators (KPIs) for the creation of slots}
+%	\label{tab:result_Netzfpl}
+%	\begin{tabular}{lcccc} \hline
+%		\textbf{KPIs}   					& \textbf{Result}  \\ \hline
+%		Number of slots             		& $935,814$                      \\
+%		computing time       				& 02:25h                     \\
+%		percentage rise Langerwehe (KLAW)   & $-1.70\%$                       \\
+%		percentage rise Bensheim (FBH) 		& $2.83\%$                       \\
+%		percentage rise Oberwesel (FOBW) 	& $6.82\%$                     \\ \hline
+%	\end{tabular}
+%\end{table}
+%\par
 %
-\begin{table}[h]
-	\centering
-	\caption{Key performance indicators (KPIs) for the creation of slots}
-	\label{tab:result_Netzfpl}
-	\begin{tabular}{lcccc} \hline
-		\textbf{KPIs}   					& \textbf{Result}  \\ \hline
-		Number of slots             		& $935,814$                      \\
-		computing time       				& 02:25h                     \\
-		percentage rise Langerwehe (KLAW)   & $-1.70\%$                       \\
-		percentage rise Bensheim (FBH) 		& $2.83\%$                       \\
-		percentage rise Oberwesel (FOBW) 	& $6.82\%$                     \\ \hline
-	\end{tabular}
-\end{table}
-\par
+%Table~\ref{tab:result_Netzfpl} shows the efficiency of our approach compared to human planer in 2013. While in average we are able to create about $3\%$ more slots, the biggest loss is $1.70\%$ in KLAW; contrasting a biggest gain of $6.82\%$ more slots in FOBW. Furthermore the creation of slots only takes $2.5$ hours compared to several days back in 2013.
+%%
 
-Table~\ref{tab:result_Netzfpl} shows the efficiency of our approach compared to human planer in 2013. While in average we are able to create about $3\%$ more slots, the biggest loss is $1.70\%$ in KLAW; contrasting a biggest gain of $6.82\%$ more slots in FOBW. Furthermore the creation of slots only takes $2.5$ hours compared to several days back in 2013.
-%
+The experiment shows, that our approach is very efficient compared to manual planing in 2013, as we are able to create an average of about $3\%$ more slots. Furthermore the creation of $935,814$ slots only takes $2.5$ hours compared to several days back in 2013.
 \begin{table}[h]
 	\centering
 	\caption{Key performance indicators (KPIs) for the train path assignment}
@@ -111,4 +113,4 @@ Table~\ref{tab:result_Netzfpl} shows the efficiency of our approach compared to 
 \end{table}
 \par
 
-From Table~\ref{tab:result_Netzfpl_Bel} we see that precalculation of slots is beneficial for our approach as $80\%$ of all assigned train paths use slots. $20\%$ of the requests are assigned to individually created train paths. The average BFQ is $1.27$ which is more than $5\%$ better compared to the results of the manual process in 2013. As the train path assignment takes about $3$ hours, a whole timetable for Corridor One is created in $5.5$ hours fulfilling $210$ customer requests on 935.814 slots.
+From Table~\ref{tab:result_Netzfpl_Bel} we see that precalculation of slots is beneficial for our approach as $80\%$ of all assigned train paths use slots. $20\%$ of the requests are assigned to individually created train paths. The average BFQ is $1.27$ which is more than $5\%$ better compared to the results of the manual process in 2013. As the train path assignment takes about $3$ hours, a whole timetable for Corridor One is created in $5.5$ hours fulfilling $210$ customer requests on $935,814$ slots.
