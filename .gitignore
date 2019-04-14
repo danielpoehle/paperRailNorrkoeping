@@ -1,0 +1,5 @@
+
+*.aux
+*.log
+special-issue-tex/specialIssue.pdf
+special-issue-tex/specialIssue.synctex.gz

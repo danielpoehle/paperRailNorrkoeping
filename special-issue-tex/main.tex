@@ -1,0 +1,177 @@
+% If you use pdflatex to compile this file,
+\documentclass[10pt,a4paper,oneside,onecolumn]{article}
+% Else if you use latex and dvipdfmx to compile this file,
+%\documentclass[10pt,a4paper,oneside,onecolumn,dvipdfmx]{article}
+% Else if you use latex and dvipdfm to compile this file,
+%\documentclass[10pt,a4paper,oneside,onecolumn,dvipdfm]{article}
+% If you use a DVI viewer, e.g. dviout for Windows,
+%\documentclass[10pt,a4paper,oneside,onecolumn,dviout]{article}
+
+% Use the ICROMA.sty package
+\usepackage{ICROMA}
+\usepackage{enumerate}
+
+% Insert paper title
+\title{Transforming automatic scheduling in a working application for a railway infrastructure manager}
+% Insert author name(s)
+\author{
+	Florian H.W. Dahms $^{\text{a}}$,
+	Anna-Lena Frank $^{\text{b}}$,
+	Sebastian K\"uhn $^{\text{b}}$,
+	Daniel P\"ohle $^{\text{b,1}}$
+}
+% Insert affiliation information
+\affiliation{
+	$^{\text{a}}$ Vulpes AI GmbH \\
+	Textorstrasse 97, 60596 Frankfurt am Main, Germany \\
+	$^{\text{b}}$ neXt Lab, I.NMF 32, DB Netz AG \\
+	Rotfederring 9, 60327 Franfurt am Main, Germany \\
+	$^{\text{1}}$ E-mail: Daniel.Poehle@deutschebahn.com, Phone: +49 (0) 69 265 48267
+}
+
+%\usepackage{amsmath,amssymb,amstext}
+%\usepackage{graphicx}
+%\usepackage{subfigure}
+%\usepackage[dvips]{epsfig}
+%\usepackage{texdraw}
+%\usepackage{color}
+%\usepackage{url}
+%\usepackage[ruled,vlined]{algorithm2e}
+%\usepackage{placeins}
+%\usepackage{algorithmic}
+%\usepackage{multirow}
+%\usepackage{tikz}								% Laedt das TikZ-Package (erlaubt das zeichnen von Graphen)
+%\usetikzlibrary{arrows}					% erlaubt Pfeile mit TikZ zu zeichnen
+%\usetikzlibrary{shapes}					% erlaubt ??? mit TikZ zu zeichnen
+%
+%\newtheorem{Theorem}{Theorem}[section]	% Damit sind dann Theorem, Korollar und Lemma definiert.
+%\newtheorem{Cor}[Theorem]{Korollar}	    % Die Nummerierung erfolgt Kapitelweise.
+%\newtheorem{Lemma}[Theorem]{Lemma}
+%\newtheorem{Def}[Theorem]{Definiton}
+%\newtheorem{Remark}[Theorem]{Remark}
+%\newtheorem{Bsp}[Theorem]{Example}
+%
+%\DeclareSymbolFont{msbm}{U}{msb}{m}{n}
+%\DeclareMathSymbol{\N}{\mathalpha}{msbm}{'116}
+%\DeclareMathSymbol{\R}{\mathalpha}{msbm}{'122}
+%\DeclareMathOperator*{\argmax}{arg\,max}
+%
+%%\def\ds{\displaystyle}
+%
+%%\newcommand{\todo}[1]{\par \vspace{2mm}\centerline{\fbox{\fbox{\bf #1}}}\vspace{2mm}}
+%
+%\newcommand{\abs}[1]{\ensuremath{ \left\lvert {#1} \right\rvert} }	% Betrag
+%\newcommand{\st}{\ensuremath{\text{s.t.}} }		% subject to für Optimierungsproblem
+%%\newcommand{\N}{\ensuremath{\mathbb{N}}}			% Mengen N
+%\newcommand{\Z}{\ensuremath{\mathbb{Z}}}			% Mengen Z
+%%\newcommand{\R}{\ensuremath{\mathbb{R}}}			% Mengen R
+%\newcommand{\B}{\ensuremath{\mathbb{B}}}			% Menge B (binaere Zahlen)
+%\newcommand{\T}{\ensuremath{\text{T}} }				% T für transponiert
+%
+%\newcommand\nn{\nonumber}					% Keine Gleichungsnummer
+%
+%\renewcommand{\d}{\ensuremath{\hspace{-0.7mm}\text{d}} }	% d für Integral dr oder dt
+%
+%
+%\numberwithin{equation}{section}
+
+%\newcommand{\my}[1]{{\bf TODO #1}}
+%\newcommand{\eqdach}{\stackrel{\wedge}{=}}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}} % -> footnote is not allowed
+%\renewcommand{\qedsymbol}{qed}
+
+%\graphicspath{{Bilder/}}		% path to look for (eps)-pictures
+
+
+
+\begin{document}
+% Pagenumbering is removed (for proceeding generation)
+
+\maketitle
+
+\begin{abstract} %% Not more than 250 words
+In this article, we present a practical approach for the optimized creation of railway timetables. The algorithms are intended to be used by Deutsche Bahn, Germanys largest railway infrastructure provider. We show how our methods can be used, both for creating a timetable in advance and for answering ad-hoc requests coming in via a digital app.
+Numerical experiments are provided to show that our solution exceeds manual timetabling in terms of capacity usage, travel times and the time taken for creating the timetable.
+\end{abstract}
+
+% Insert 3 - 5 keywords
+\keywords{
+	traffic networks, network optimization
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{extendedAbstract} % Between 750 and 2000 words, up to 10 references
+
+% Full paper (not more than 10 pages)
+%\input{introduction}
+
+%\input{modelling}
+
+%\input{optproblem}
+
+%\input{mip}
+
+%\input{numerics}
+
+%\input{outlook}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgements}
+This work was financially supported by BMVI, Project DigiKap.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+	\setlength{\itemsep}{0\parskip}
+
+	\bibitem[Feil and P\"ohle(2014)]{FP:2014}
+	Feil,~M., P\"ohle,~D., 2014.
+	{``Why Does a Railway Infrastructure Company Need an Optimized Train Path Assignment for Industrialized Timetabling"},
+	International Conference on Operations Research,
+	Aachen.
+	
+	\bibitem[Großmann et~al.(2012)]{G:2012}
+	Gro{\ss}mann,~P., H\"olldobler,~S., Mantey,~N., Nachtigall,~K, Opitz,~J., Steinke,~P., 2012.
+	``Solving Periodic Event Scheduling Problems with SAT",
+	In: {\em Advanced Research in Applied Artificial Intelligence},
+	Springer Berlin Heidelberg.
+	
+	\bibitem[Großmann et~al.(2013)]{G:2013}
+	Gro{\ss}mann,~P., Labinsky,~A., Opitz,~J., Wei{\ss},~R., 2013.
+	``Capacity-utilized Integration and Optimization of Rail Freight Train Paths into 24 Hours Timetables",
+	In: {\em Proceedings of the 3rd International Conference on Models and Technologies for Intelligent Transportation Systems 2013},
+	TUDpress, Dresden.	
+	
+	\bibitem[Nachtigall(1998)]{N:1998}
+	Nachtigall,~K., 1998
+	{``Periodic Network Optimization and Fixed Interval Timetables"},
+	Habilitation thesis,
+	Hildesheim.
+	
+	\bibitem[Nachtigall and Opitz(2014)]{NO:2014}
+	Nachtigall,~K., Opitz,~J., 2014.
+	{``Modelling and Solving a Train Path Assignment Model"},
+	International Conference on Operations Research,
+	Aachen.
+	
+	\bibitem[Nachtigall(2015)]{N:2015}
+	Nachtigall,~K., 2014.
+	{``Modelling and Solving a Train Path Assignment Model with Traffic Day Restriction"},
+	In: {\em Operations Research Proceedings 2015},
+	Springer, Heidelberg.	
+	
+	\bibitem[Opitz(2014)]{O:2009}
+	Opitz,~J., 2009
+	{``Automatische Erzeugung und Optimierung von Taktfahrplänen in Schienenverkehrsnetzen"},
+	Dissertation,
+	Dresden.	
+	
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
